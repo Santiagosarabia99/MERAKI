@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" prefix="dc: http://purl.org/dc/elements/1.1/">
-<head><meta name="author" content="Created with Masher by Half-Baked Software, registered to David."/><meta name="keywords" content="Masher, Hot Potatoes, Half-Baked Software, Windows, University of Victoria"/>
+<head><meta name="author" content="Created with Hot Potatoes by Half-Baked Software, registered to David."/><meta name="keywords" content="Hot Potatoes, Hot Potatoes, Half-Baked Software, Windows, University of Victoria"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-<title>
+<meta name="dc:creator" content="David" />
+<meta name="dc:title" content="Meraki" />
 
+
+
+<title>
+Meraki
 </title>
 
-<!-- Made with executable version HotPotatoes: Masher Version 7.0 Release 3 Build 0 -->
+<!-- Made with executable version 7.0 Release 3 Build 0 -->
 
 <!-- The following insertion allows you to add your own code directly to this head tag from the configuration screen -->
 
@@ -15,15 +20,35 @@
 
 <style>
 
+
+/* This is the CSS stylesheet used in the exercise. */
+/* Elements in square brackets are replaced by data based on configuration settings when the exercise is built. */
+
+/* BeginCorePageCSS */
+
+/* Made with executable version 7.0 Release 3 Build 0 */
+
+
+
+/* CSS variables for colours. */
 :root{
-	--strFontFace:       arial,helvetica,sans-serif;
-	--strFontSize:       small;
+	--strFontFace:       Geneva,Arial,sans-serif;
+	--strFontSize:       medium;
 	--strTextColor:      #000000;
 	--strTitleColor:     #000000;
-	--strLinkColor:      #0000ff;
-	--strVLinkColor:     #ff00ff;
-	--strPageBGColor:    #ffffff;
-	--strExBGColor:      #dddddd;
+
+	--strFuncLightColor: #ffffff;
+	--strFuncShadeColor: #7f7f7f;
+	--strLinkColor:      #0000FF;
+	--strVLinkColor:     #0000CC;
+	
+	--strNavBarColor:    #000000;
+	--strNavLightColor:  #7f7f7f;
+	--strNavShadeColor:  #000000;
+	--strNavTextColor:   #ffffff;
+	
+	--strPageBGColor:    #C0C0C0;
+	--strExBGColor:      #FFFFFF;
 }
 
 body{
@@ -37,10 +62,27 @@ body{
 	padding-bottom: 0.5em;
 }
 
+p{
+	text-align: left;
+	margin: 0px;
+	font-size: 1em;
+}
+
+table,div,span,td{
+	font-size: 1em;
+	color: var(--strTextColor);
+}
+
 div.Titles{
 	padding: 0.5em;;
 	text-align: center;
 	color: var(--strTitleColor);
+}
+
+button{
+	font-family: var(--strFontFace);
+	font-size: 1em;
+	display: inline;
 }
 
 .ExerciseTitle{
@@ -49,31 +91,512 @@ div.Titles{
 }
 
 .ExerciseSubtitle{
-	font-size: 125%;
+	font-size: 120%;
 	color: var(--strTitleColor);
 }
 
-div.IndexDiv{
+div.StdDiv, div.ExerciseContainer, div.ReadingContainer{
+	background-color: var(--strExBGColor);
+	text-align: center;
+	font-size: 1em;
+	color: var(--strTextColor);
+	padding: 0.5em;
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	border-color: var(--strTextColor);
+	margin-bottom: 1px;
+}
+
+div.ReadingContainer, div.ExerciseContainer{
+	min-width: 15em;
+	flex-grow: 1;
+	flex-basis: 0;
+	margin: 1px;
+}
+
+div#ContainerDiv{
+	margin: -1px;
+	padding: 0;
+	border: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+/* EndCorePageCSS */
+
+.RTLText{
+	text-align: right;
+	font-size: 150%;
+	direction: rtl;
+	font-family: "Simplified Arabic", "Traditional Arabic", "Times New Roman", var(--strFontFace); 
+}
+
+.CentredRTLText{
+	text-align: center;
+	font-size: 150%;
+	direction: rtl;
+	font-family: "Simplified Arabic", "Traditional Arabic", "Times New Roman", var(--strFontFace); 
+}
+
+button p.RTLText{
+	text-align: center;
+}
+
+.RTLGapBox{
+	text-align: right;
+	font-size: 150%;
+	direction: rtl;
+	font-family: "Times New Roman", var(--strFontFace);
+}
+
+.Guess{
+	font-weight: bold;
+}
+
+.CorrectAnswer{
+	font-weight: bold;
+}
+
+div#Timer{
+	padding: 0.25em;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 2em;
-	border-style: solid;
-	border-width: 1px;
 	text-align: center;
-	width: 40%;
-	background-color: var(--strExBGColor);
+	color: var(--strTitleColor);
+}
+
+span#TimerText{
+	padding: 0.25em;
+	border-width: 1px;
+	border-style: solid;
+	font-weight: bold;
+	display: none;
+	color: var(--strTitleColor);
+}
+
+span.Instructions{
+
+}
+
+div.ExerciseText{
+
+}
+
+.FeedbackText, .FeedbackText span.CorrectAnswer, .FeedbackText span.Guess, .FeedbackText span.Answer{
+	color: var(--strTitleColor);
+}
+
+.LeftItem{
+	font-size: 1em;
 	color: var(--strTextColor);
+	text-align: left;
+}
+
+.RightItem{
+	font-weight: bold;
+	font-size: 1em;
+	color: var(--strTextColor);
+	text-align: left;
+}
+
+span.CorrectMark{
+
+}
+
+input, textarea{
+	font-family: var(--strFontFace);
 	font-size: 120%;
 }
 
-.Index{
-	text-align: left;
-	font-size: 100%;
+select{
+	font-size: 1em;
 }
 
-ul.Index li{
-	margin: 0.5em;
+div.Feedback {
+	background-color: var(--strPageBGColor);
+	left: 33%;
+	width: 34%;
+	top: 33%;
+	z-index: 1;
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	text-align: center;
+	color: var(--strTitleColor);
+	position: absolute;
+	display: none;
+	font-size: 1em;
 }
+
+
+
+
+div.ExerciseDiv{
+	color: var(--strTextColor);
+}
+
+/* JMatch standard output table. */
+table.MatchTable{
+	margin: 2em auto; 
+	border-width: 0;
+}
+
+/* JMatch flashcard styles */
+table.FlashcardTable{
+	background-color: transparent;
+	color: var(--strTextColor);
+	border-color: var(--strTextColor);
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	/*width: 90%;*/
+	position: relative;
+	text-align: center;
+	padding: 0px;
+}
+
+table.FlashcardTable tr{
+	border-style: none;
+	margin: 0px;
+	padding: 0px;
+	background-color: var(--strExBGColor);
+}
+
+table.FlashcardTable td.Showing{
+	font-size: 140%;
+	text-align: center;
+	width: 50%;
+	display: table-cell;
+	padding: 2em;
+	margin: 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 0.5em;
+	color: var(--strTextColor);
+	box-shadow: 0.2em 0.3em 0.2em var(--strNavShadeColor);
+	background-color: var(--strPageBGColor);
+}
+
+table.FlashcardTable td.Hidden{
+	display: none;
+}
+
+/* JMix styles */
+div.JMixDrag, div.JMatchDrag{
+	padding: 0;
+	background-color: var(--strPageBGColor);
+	border-style: none;
+}
+
+div#GuessDiv{
+	padding: 0.5em;
+	margin-bottom: 2em;
+}
+
+div#SegmentDiv{
+	margin-top: 2em;
+	margin-bottom: 2em;
+	text-align: center;
+}
+
+a.ExSegment{
+	font-size: 120%;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--strTextColor);
+	display: inline-block;
+	padding: 0.5em;
+	border: solid 1pt gray;
+	margin-bottom: 0.5em;
+}
+
+span.RemainingWordList{
+	font-style: italic;
+}
+
+div.DropLine {
+	position: absolute;
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: var(--strTitleColor);
+	width: 80%;
+	left: 10%;
+}
+
+/* JCloze styles */
+
+.ClozeWordList{
+	text-align: center;
+	font-weight: bold;
+}
+
+div.ClozeBody{
+	text-align: left;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	line-height: 2.0
+}
+
+span.GapSpan{
+	font-weight: bold;
+}
+
+/* JCross styles */
+
+table.CrosswordGrid{
+	margin: auto auto 1em auto;
+	border-collapse: collapse;
+	padding: 0px;
+	background-color: #000000;
+}
+
+table.CrosswordGrid tbody tr td{
+	width: 1.5em;
+	height: 1.5em;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 140%;
+	padding: 1px;
+	margin: 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	color: #000000;
+}
+
+table.CrosswordGrid span{
+	color: #000000;
+}
+
+table.CrosswordGrid td.BlankCell{
+	background-color: #000000;
+	color: #000000;
+}
+
+table.CrosswordGrid td.LetterOnlyCell{
+	text-align: center;
+	vertical-align: middle;
+	background-color: #ffffff;
+	color: #000000;
+	font-weight: bold;
+}
+
+table.CrosswordGrid td.NumLetterCell{
+	text-align: left;
+	vertical-align: top;
+	background-color: #ffffff;
+	color: #000000;
+	padding: 1px;
+	font-weight: bold;
+}
+
+.NumLetterCellText{
+	cursor: pointer;
+	color: #000000;
+}
+
+.GridNum{
+	vertical-align: super;
+	font-size: 66%;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000000;
+}
+
+.GridNum:hover, .GridNum:visited{
+	color: #000000;
+}
+
+table#Clues{
+	margin: auto;
+	vertical-align: top;
+}
+
+table#Clues td{
+	vertical-align: top;
+}
+
+table.ClueList{
+  margin: auto;
+}
+
+td.ClueNum{
+	text-align: right;
+	font-weight: bold;
+	vertical-align: top;
+}
+
+td.Clue{
+	text-align: left;
+}
+
+div#ClueEntry{
+	text-align: left;
+	margin-bottom: 1em;
+}
+
+/* Keypad styles */
+
+div.Keypad{
+	text-align: center;
+	display: none; /* initially hidden, shown if needed */
+	margin-bottom: 0.5em;
+}
+
+div.Keypad button{
+	font-family: var(--strFontFace);
+	font-size: 120%;
+	background-color: #ffffff;
+	color: #000000;
+	width: 2em;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 0.5em;
+	color: var(--strTextColor);
+	box-shadow: 0.2em 0.3em 0.2em var(--strTextColor);
+}
+
+/* JQuiz styles */
+
+div.QuestionNavigation{
+	text-align: center;
+}
+
+.QNum{
+	margin: 0em 1em 0.5em 1em;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+textarea{
+	font-family: var(--strFontFace);
+}
+
+.QuestionText{
+	text-align: left;
+	margin: 0px;
+	font-size: 1em;
+}
+
+.Answer{
+	font-size: 120%;
+}
+
+.PartialAnswer{
+	font-size: 120%;
+	letter-spacing: 0.1em;
+	color: var(--strTitleColor);
+}
+
+.Highlight{
+	color: #000000;
+	background-color: #ffff00;
+	font-weight: bold;
+	font-size: 120%;
+}
+
+ol.QuizQuestions{
+	text-align: left;
+	list-style-type: none;
+}
+
+li.QuizQuestion{
+	padding: 1em;
+	border-style: solid;
+	border-width: 0px 0px 1px 0px;
+}
+
+ol.MCAnswers{
+	text-align: left;
+	list-style-type: upper-alpha;
+	padding: 1em;
+}
+
+ol.MCAnswers li{
+	margin-bottom: 1em;
+}
+
+ol.MSelAnswers{
+	text-align: left;
+	list-style-type: lower-alpha;
+	padding: 1em;
+}
+
+div.ShortAnswer{
+	padding: 1em;
+}
+
+.FuncButton {
+	border-style: solid;
+	border-radius: 0.5em;
+	padding: 0.5em;
+	min-width: 3em;
+
+	border-left-color: var(--strFuncLightColor);
+	border-top-color: var(--strFuncLightColor);
+	border-right-color: var(--strFuncShadeColor);
+	border-bottom-color: var(--strFuncShadeColor);
+	color: var(--strTextColor);
+	background-color: var(--strExBGColor);
+
+	border-width: 1pt;
+	cursor: pointer;	
+	box-shadow: 0.2em 0.3em 0.2em var(--strFuncShadeColor);
+}
+
+.FuncButton:active {
+	box-shadow: none;
+}
+
+.FuncButton:hover{
+	color: var(--strExBGColor);
+	background-color: var(--strTextColor);
+}
+
+/*BeginNavBarStyle*/
+
+div.NavButtonBar{
+	background-color: var(--strNavBarColor);
+	text-align: center;
+	margin: 0.25rem 0;
+	clear: both;
+	font-size: 1em;
+	padding: 0.2em;
+	box-sizing: border-box;
+}
+
+.NavButton {
+	border-style: solid;
+	border-radius: 0.5em;
+	padding: 0.5em;
+	min-width: 3em;
+	
+	border-left-color: var(--strNavLightColor);
+	border-top-color: var(--strNavLightColor);
+	border-right-color: var(--strNavShadeColor);
+	border-bottom-color: var(--strNavShadeColor); 
+	background-color: var(--strNavBarColor);
+	color: var(--strNavTextColor);
+
+	border-width: 1pt;
+	cursor: pointer;	
+	box-shadow: 0.2em 0.3em 0.2em var(--strNavShadeColor);
+}
+
+.NavButton:active {
+	box-shadow: none;
+}
+
+.NavButton:hover{
+	color: var(--strNavBarColor);
+	background-color: var(--strNavTextColor);
+}
+
+/*EndNavBarStyle*/
 
 a{
 	color: var(--strLinkColor);
@@ -87,23 +610,1770 @@ a:hover{
 	color: var(--strLinkColor);
 }
 
+div.CardStyle {
+	position: absolute;
+	font-family: var(--strFontFace);
+	font-size: 1em;
+	border-style: solid;
+	border-radius: 0.5em;
+	padding: 0.5em;
+	min-width: 2em;
+	border-width: 1pt;
+	color: var(--strTextColor);
+	box-shadow: 0.2em 0.3em 0.2em var(--strTextColor);
+	background-color: var(--strExBGColor);
+	left: -50px;
+	top: -50px;
+	overflow: visible;
+	touch-action: none;
+	user-select: none;
+	box-sizing: border-box;
+}
+
+div.CardStyleCentered{
+	text-align: center;
+}
+
+.rtl{
+	text-align: right;
+	font-size: 140%;
+}
+
+
 </style>
+
+<script>
+
+//<![CDATA[
+
+<!--
+
+
+
+
+//CODE FOR HANDLING NAV BUTTONS AND FUNCTION BUTTONS
+
+function FocusAButton(){
+	if (document.getElementById('CheckButton1') != null){
+		document.getElementById('CheckButton1').focus();
+	}
+	else{
+		if (document.getElementById('CheckButton2') != null){
+			document.getElementById('CheckButton2').focus();
+		}
+		else{
+			document.getElementsByTagName('button')[0].focus();
+		}
+	}
+}
+
+
+
+
+//CODE FOR HANDLING DISPLAY OF POPUP FEEDBACK BOX
+
+var topZ = 1000;
+
+function ShowMessage(Feedback){
+	var Output = Feedback + '<br /><br />';
+	document.getElementById('FeedbackContent').innerHTML = Output;
+	var FDiv = document.getElementById('FeedbackDiv');
+	topZ++;
+	FDiv.style.zIndex = topZ;
+	FDiv.style.top = TopSettingWithScrollOffset(30) + 'px';
+
+	FDiv.style.display = 'block';
+
+	ShowElements(false, 'input');
+	ShowElements(false, 'select');
+	ShowElements(false, 'object');
+	ShowElements(true, 'object', 'FeedbackContent');
+
+//Focus the OK button
+	setTimeout("document.getElementById('FeedbackOKButton').focus()", 50);
+	
+//
+//	RefreshImages();
+//
+}
+
+function ShowElements(Show, TagName, ContainerToReverse){
+// added third argument to allow objects in the feedback box to appear
+//IE bug -- hide all the form elements that will show through the popup
+//FF on Mac bug : doesn't redisplay objects whose visibility is set to visible
+//unless the object's display property is changed
+
+	//get container object (by Id passed in, or use document otherwise)
+	TopNode = document.getElementById(ContainerToReverse);
+	var Els;
+	if (TopNode != null) {
+		Els = TopNode.getElementsByTagName(TagName);
+	} else {
+		Els = document.getElementsByTagName(TagName);
+	}
+
+	for (var i=0; i<Els.length; i++){
+		if (TagName == "object") {
+			//manipulate object elements in all browsers
+			if (Show == true){
+				Els[i].style.visibility = 'visible';
+			}
+			else{
+				Els[i].style.visibility = 'hidden';
+			}
+		} 
+	}
+}
+
+
+
+function HideFeedback(){
+	document.getElementById('FeedbackDiv').style.display = 'none';
+	ShowElements(true, 'input');
+	ShowElements(true, 'select');
+	ShowElements(true, 'object');
+}
+
+
+//GENERAL UTILITY FUNCTIONS AND VARIABLES
+
+//PAGE DIMENSION FUNCTIONS
+function PageDim(){
+//Get the page width and height
+	this.W = 600;
+	this.H = 400;
+	this.W = document.getElementsByTagName('body')[0].offsetWidth;
+	this.H = document.getElementsByTagName('body')[0].offsetHeight;
+}
+
+var pg = null;
+
+function GetPageXY(El) {
+	var XY = {x: 0, y: 0};
+	while(El){
+		XY.x += El.offsetLeft;
+		XY.y += El.offsetTop;
+		El = El.offsetParent;
+	}
+	return XY;
+}
+
+function GetScrollTop(){
+	if (typeof(window.pageYOffset) == 'number'){
+		return window.pageYOffset;
+	}
+	else{
+		if ((document.body)&&(document.body.scrollTop)){
+			return document.body.scrollTop;
+		}
+		else{
+			if ((document.documentElement)&&(document.documentElement.scrollTop)){
+				return document.documentElement.scrollTop;
+			}
+			else{
+				return 0;
+			}
+		}
+	}
+}
+
+function GetViewportHeight(){
+	if (typeof window.innerHeight != 'undefined'){
+		return window.innerHeight;
+	}
+	else{
+		if (((typeof document.documentElement != 'undefined')&&(typeof document.documentElement.clientHeight !=
+     'undefined'))&&(document.documentElement.clientHeight != 0)){
+			return document.documentElement.clientHeight;
+		}
+		else{
+			return document.getElementsByTagName('body')[0].clientHeight;
+		}
+	}
+}
+
+function TopSettingWithScrollOffset(TopPercent){
+	var T = Math.floor(GetViewportHeight() * (TopPercent/100));
+	return GetScrollTop() + T; 
+}
+
+//CODE FOR AVOIDING LOSS OF DATA WHEN BACKSPACE KEY INVOKES history.back()
+var InTextBox = false;
+
+function SuppressBackspace(e){ 
+	if (InTextBox == true){return;}
+	thisKey = e.keyCode;
+
+	var Suppress = false;
+
+	if (thisKey == 8) {
+		Suppress = true;
+		e.preventDefault();
+	}
+}
+
+window.addEventListener('keypress',SuppressBackspace,false);
+
+function ReduceItems(InArray, ReduceToSize){
+	var ItemToDump=0;
+	var j=0;
+	while (InArray.length > ReduceToSize){
+		ItemToDump = Math.floor(InArray.length*Math.random());
+		InArray.splice(ItemToDump, 1);
+	}
+}
+
+function Shuffle(InArray){
+	var Num;
+	var Temp = new Array();
+	var Len = InArray.length;
+
+	var j = Len;
+
+	for (var i=0; i<Len; i++){
+		Temp[i] = InArray[i];
+	}
+
+	for (i=0; i<Len; i++){
+		Num = Math.floor(j  *  Math.random());
+		InArray[i] = Temp[Num];
+
+		for (var k=Num; k < (j-1); k++) {
+			Temp[k] = Temp[k+1];
+		}
+		j--;
+	}
+	return InArray;
+}
+
+function WriteToInstructions(Feedback) {
+	document.getElementById('InstructionsDiv').innerHTML = Feedback;
+
+	RefreshImages();
+
+}
+
+
+
+Imgs = new Array();
+
+function PreloadImages(){
+	var a = PreloadImages.arguments;
+	for (var i=0; i<a.length; i++){
+		Imgs[i] = new Image();
+		Imgs[i].src = a[i];
+	}
+}
+
+function RefreshImages(){
+	for (var i=0; i<document.images.length; i++){
+		if (document.images[i].name.substring(0,6) != 'NavBar'){
+			document.images[i].src = document.images[i].src;
+		}
+	}
+}
+
+
+function EscapeDoubleQuotes(InString){
+	return InString.replace(/"/g, '&quot;')
+}
+
+function TrimString(InString){
+        var x = 0;
+
+        if (InString.length != 0) {
+                while ((InString.charAt(InString.length - 1) == '\u0020') || (InString.charAt(InString.length - 1) == '\u000A') || (InString.charAt(InString.length - 1) == '\u000D')){
+                        InString = InString.substring(0, InString.length - 1)
+                }
+
+                while ((InString.charAt(0) == '\u0020') || (InString.charAt(0) == '\u000A') || (InString.charAt(0) == '\u000D')){
+                        InString = InString.substring(1, InString.length)
+                }
+
+                while (InString.indexOf('  ') != -1) {
+                        x = InString.indexOf('  ')
+                        InString = InString.substring(0, x) + InString.substring(x+1, InString.length)
+                 }
+
+                return InString;
+        }
+
+        else {
+                return '';
+        }
+}
+
+function FindLongest(InArray){
+	if (InArray.length < 1){return -1;}
+
+	var Longest = 0;
+	for (var i=1; i<InArray.length; i++){
+		if (InArray[i].length > InArray[Longest].length){
+			Longest = i;
+		}
+	}
+	return Longest;
+}
+
+//SELECTION OBJECT FOR TYPING WITH KEYPAD
+var selObj = null;
+            
+SelObj = function(box){
+	this.box = box;
+	this.selStart = this.box.selectionStart;
+	this.selEnd = this.box.selectionEnd;
+	this.selText = this.box.value.substring(this.selStart, this.selEnd);
+	return this;
+}
+
+function setSelText(newText){
+	var caretPos = this.selStart + newText.length;
+	var newValue = this.box.value.substring(0, this.selStart);
+	newValue += newText;
+	newValue += this.box.value.substring(this.selEnd, this.box.value.length);
+	this.box.value = newValue;
+	this.box.setSelectionRange(caretPos, caretPos);
+	this.box.focus();
+}
+SelObj.prototype.setSelText = setSelText;
+
+function setSelSelectionRange(start, end){
+	this.box.setSelectionRange(start, end);
+}
+SelObj.prototype.setSelSelectionRange = setSelSelectionRange;
+
+//UNICODE CHARACTER FUNCTIONS
+function IsCombiningDiacritic(CharNum){
+	var Result = (((CharNum >= 0x0300)&&(CharNum <= 0x370))||((CharNum >= 0x20d0)&&(CharNum <= 0x20ff)));
+	Result = Result || (((CharNum >= 0x3099)&&(CharNum <= 0x309a))||((CharNum >= 0xfe20)&&(CharNum <= 0xfe23)));
+	return Result;
+}
+
+function IsCJK(CharNum){
+	return ((CharNum >= 0x3000)&&(CharNum < 0xd800));
+}
+
+//SETUP FUNCTIONS
+//BROWSER WILL REFILL TEXT BOXES FROM CACHE IF NOT PREVENTED
+function ClearTextBoxes(){
+	var NList = document.getElementsByTagName('input');
+	for (var i=0; i<NList.length; i++){
+		if ((NList[i].id.indexOf('Guess') > -1)||(NList[i].id.indexOf('Gap') > -1)){
+			NList[i].value = '';
+		}
+		if (NList[i].id.indexOf('Chk') > -1){
+			NList[i].checked = '';
+		}
+	}
+}
+
+
+
+
+
+
+
+//JQUIZ CORE JAVASCRIPT CODE
+
+var CurrQNum = 0;
+var CorrectIndicator = '&#x2714;';
+var IncorrectIndicator = '&#x2718;';
+var YourScoreIs = 'Your score is ';
+
+//New for 6.2.2.0
+var CompletedSoFar = 'Questions completed so far: ';
+var ExerciseCompleted = 'You have completed the exercise.';
+var ShowCompletedSoFar = true;
+
+var ContinuousScoring = true;
+var CorrectFirstTime = 'Questions answered correctly first time: ';
+var ShowCorrectFirstTime = true;
+var ShuffleQs = false;
+var ShuffleAs = false;
+var DefaultRight = 'Correct!';
+var DefaultWrong = 'Sorry! Try again.';
+var QsToShow = 70;
+var Score = 0;
+var Finished = false;
+var Qs = null;
+var QArray = new Array();
+var ShowingAllQuestions = false;
+var ShowAllQuestionsCaption = 'Show all questions';
+var ShowOneByOneCaption = 'Show questions one by one';
+var State = new Array();
+var Feedback = '';
+var TimeOver = false;
+var strInstructions = '';
+var Locked = false;
+
+//The following variable can be used to add a message explaining that
+//the question is finished, so no further marking will take place.
+var strQuestionFinished = '';
+
+function CompleteEmptyFeedback(){
+	var QNum, ANum;
+	for (QNum=0; QNum<I.length; QNum++){
+//Only do this if not multi-select
+		if (I[QNum][2] != '3'){
+  		for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+  			if (I[QNum][3][ANum][1].length < 1){
+  				if (I[QNum][3][ANum][2] > 0){
+  					I[QNum][3][ANum][1] = DefaultRight;
+  				}
+  				else{
+  					I[QNum][3][ANum][1] = DefaultWrong;
+  				}
+  			}
+  		}
+		}
+	}
+}
+
+function SetUpQuestions(){
+	var AList = new Array(); 
+	var QList = new Array();
+	var i, j;
+	Qs = document.getElementById('Questions');
+	while (Qs.getElementsByTagName('li').length > 0){
+		QList.push(Qs.removeChild(Qs.getElementsByTagName('li')[0]));
+	}
+	var DumpItem = 0;
+	if (QsToShow > QList.length){
+		QsToShow = QList.length;
+	}
+	while (QsToShow < QList.length){
+		DumpItem = Math.floor(QList.length*Math.random());
+		for (j=DumpItem; j<(QList.length-1); j++){
+			QList[j] = QList[j+1];
+		}
+		QList.length = QList.length-1;
+	}
+	if (ShuffleQs == true){
+		QList = Shuffle(QList);
+	}
+	if (ShuffleAs == true){
+		var As;
+		for (var i=0; i<QList.length; i++){
+			As = QList[i].getElementsByTagName('ol')[0];
+			if (As != null){
+  			AList.length = 0;
+				while (As.getElementsByTagName('li').length > 0){
+					AList.push(As.removeChild(As.getElementsByTagName('li')[0]));
+				}
+				AList = Shuffle(AList);
+				for (j=0; j<AList.length; j++){
+					As.appendChild(AList[j]);
+				}
+			}
+		}
+	}
+	
+	for (i=0; i<QList.length; i++){
+		Qs.appendChild(QList[i]);
+		QArray[QArray.length] = QList[i];
+	}
+
+//Show the first item
+	QArray[0].style.display = '';
+	
+//Now hide all except the first item
+	for (i=1; i<QArray.length; i++){
+		QArray[i].style.display = 'none';
+	}		
+	SetQNumReadout();
+	
+	SetFocusToTextbox();
+}
+
+function SetFocusToTextbox(){
+//if there's a textbox, set the focus in it
+	if (QArray[CurrQNum].getElementsByTagName('input')[0] != null){
+		QArray[CurrQNum].getElementsByTagName('input')[0].focus();
+//and show a keypad if there is one
+		if (document.getElementById('CharacterKeypad') != null){
+			document.getElementById('CharacterKeypad').style.display = 'block';
+		}
+	}
+	else{
+  	if (QArray[CurrQNum].getElementsByTagName('textarea')[0] != null){
+  		QArray[CurrQNum].getElementsByTagName('textarea')[0].focus();	
+//and show a keypad if there is one
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'block';
+			}
+		}
+//This added for 6.0.4.11: hide accented character buttons if no textbox
+		else{
+			if (document.getElementById('CharacterKeypad') != null){
+				document.getElementById('CharacterKeypad').style.display = 'none';
+			}
+		}
+	}
+}
+
+function ChangeQ(ChangeBy){
+//The following line prevents moving to another question until the current
+//question is answered correctly. Uncomment it to enable this behaviour. 
+//	if (State[CurrQNum][0] == -1){return;}
+	if (((CurrQNum + ChangeBy) < 0)||((CurrQNum + ChangeBy) >= QArray.length)){return;}
+	QArray[CurrQNum].style.display = 'none';
+	CurrQNum += ChangeBy;
+	QArray[CurrQNum].style.display = '';
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+	SetQNumReadout();
+	SetFocusToTextbox();
+}
+
+var HiddenReadingShown = false;
+function ShowSpecialReadingForQuestion(){
+//Undocumented function for showing specific reading text elements which change with each question
+//Added on 10/12/2004
+	if (document.getElementById('ReadingDiv') != null){
+		if (HiddenReadingShown == true){
+			document.getElementById('ReadingDiv').innerHTML = '';
+		}
+		if (QArray[CurrQNum] != null){
+//Fix for 6.0.4.25
+			var Children = QArray[CurrQNum].getElementsByTagName('div');
+			for (var i=0; i<Children.length; i++){
+			if (Children[i].className=="HiddenReading"){
+					document.getElementById('ReadingDiv').innerHTML = Children[i].innerHTML;
+					HiddenReadingShown = true;
+//Hide the ShowAllQuestions button to avoid confusion
+					if (document.getElementById('ShowMethodButton') != null){
+						document.getElementById('ShowMethodButton').style.display = 'none';
+					}
+				}
+			}	
+		}
+	}
+}
+
+function SetQNumReadout(){
+	document.getElementById('QNumReadout').innerHTML = (CurrQNum+1) + ' / ' + QArray.length;
+	if ((CurrQNum+1) >= QArray.length){
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('NextQButton') != null){
+			document.getElementById('NextQButton').style.visibility = 'visible';
+		}
+	}
+	if (CurrQNum <= 0){
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'hidden';
+		}
+	}
+	else{
+		if (document.getElementById('PrevQButton') != null){
+			document.getElementById('PrevQButton').style.visibility = 'visible';
+		}
+	}
+}
+
+var I=new Array();
+I[0]=new Array();I[0][0]=100;
+I[0][1]='';
+I[0][2]='3';
+I[0][3]=new Array();
+I[0][3][0]=new Array('A. Renew the Dashboard license.','',1,100,1);
+I[0][3][1]=new Array('B. License a network.','',0,0,1);
+I[0][3][2]=new Array('C. License more devices.','',1,100,1);
+I[0][3][3]=new Array('D. Call Meraki support.','',0,0,1);
+I[0][3][4]=new Array('E. Wait for the devices to auto-renew.','',0,0,1);
+I[1]=new Array();I[1][0]=100;
+I[1][1]='';
+I[1][2]='3';
+I[1][3]=new Array();
+I[1][3][0]=new Array('A. OS updates','',0,0,1);
+I[1][3][1]=new Array('B. Send notification','',0,0,1);
+I[1][3][2]=new Array('C. Selective wipe','',0,0,1);
+I[1][3][3]=new Array('D. Screenshot','',1,100,1);
+I[1][3][4]=new Array('E. Remote Desktop','',1,100,1);
+I[2]=new Array();I[2][0]=100;
+I[2][1]='';
+I[2][2]='0';
+I[2][3]=new Array();
+I[2][3][0]=new Array('A. All APs immediately stop functioning.','',0,0,1);
+I[2][3][1]=new Array('B. All network devices stop functioning in 30 days.','',1,100,1);
+I[2][3][2]=new Array('C. One AP Immediately stops functioning.','',0,0,1);
+I[2][3][3]=new Array('D. All APs stop functioning in 30 days.','',0,0,1);
+I[3]=new Array();I[3][0]=100;
+I[3][1]='';
+I[3][2]='0';
+I[3][3]=new Array();
+I[3][3][0]=new Array('A. 1000-byte TCP probes every second, through VPN tunnels that are established over the primary WAN link.','',0,0,1);
+I[3][3][1]=new Array('B. 100-byte UDP probes every second, through VPN tunnels that are established over every WAN link.','',1,100,1);
+I[3][3][2]=new Array('C. 100-byte UDP probes every second, through VPN tunnels that are established over the primary WAN link.','',0,0,1);
+I[3][3][3]=new Array('D. 1000-byte TCP probes every second, through VPN tunnels that are established over every WAN link.','',0,0,1);
+I[4]=new Array();I[4][0]=100;
+I[4][1]='';
+I[4][2]='0';
+I[4][3]=new Array();
+I[4][3][0]=new Array('A. The Dashboard generates the SAML request.','',1,100,1);
+I[4][3][1]=new Array('B. The Dashboard provides user access credentials.','',0,0,1);
+I[4][3][2]=new Array('C. The Dashboard parses the SAML request and authenticates users.','',0,0,1);
+I[4][3][3]=new Array('D. The Dashboard generates the SAML response.','',0,0,1);
+I[5]=new Array();I[5][0]=100;
+I[5][1]='';
+I[5][2]='3';
+I[5][3]=new Array();
+I[5][3][0]=new Array('A. Users on both networks may be experiencing issues when attempting to reach Google.','',1,100,1);
+I[5][3][1]=new Array('B. Network #1 could not load Google because of a remote server issue.','',0,0,1);
+I[5][3][2]=new Array('C. Network #2 had better application performance than Network #1.','',0,0,1);
+I[5][3][3]=new Array('D. Network #2 could not load Google because of a local client misconfiguration.','',0,0,1);
+I[5][3][4]=new Array('E. Neither network recorded any server-side performance issues.','',1,100,1);
+I[6]=new Array();I[6][0]=100;
+I[6][1]='';
+I[6][2]='3';
+I[6][3]=new Array();
+I[6][3][0]=new Array('A. Full','',1,100,1);
+I[6][3][1]=new Array('B. Read-only','',1,100,1);
+I[6][3][2]=new Array('C. Monitor-only','',0,0,1);
+I[6][3][3]=new Array('D. Write','',0,0,1);
+I[6][3][4]=new Array('E. Write-only','',0,0,1);
+I[7]=new Array();I[7][0]=100;
+I[7][1]='';
+I[7][2]='0';
+I[7][3]=new Array();
+I[7][3][0]=new Array('A. A 25-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 1- hop maximum.','',0,0,1);
+I[7][3][1]=new Array('B. A 25-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 2- hop maximum.','',0,0,1);
+I[7][3][2]=new Array('C. A 50-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 1- hop maximum.','',1,100,1);
+I[7][3][3]=new Array('D. A 50-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 2- hop maximum','',0,0,1);
+I[8]=new Array();I[8][0]=100;
+I[8][1]='';
+I[8][2]='3';
+I[8][3]=new Array();
+I[8][3][0]=new Array('A. Tags enable administrators to configure a combination of network and device specific tags to create summary reports filtered for specific devices across multiple networks.','',1,100,1);
+I[8][3][1]=new Array('B. Network tags can be used to assign networks to separate Auto VPN domains in an Organization with many networks.','',0,0,1);
+I[8][3][2]=new Array('C. Network tags can be used to simplify the assignment of network-level permissions in an Organization with many networks','',0,0,1);
+I[8][3][3]=new Array('D. Device tags can be used to simplify the assignment of device-level permissions in an Organization with many administrators.','',0,0,1);
+I[8][3][4]=new Array('E. Device tags can be assigned to MR APs to influence the gateway selection for repeaters in a mesh wireless network','',1,100,1);
+I[9]=new Array();I[9][0]=100;
+I[9][1]='';
+I[9][2]='0';
+I[9][3]=new Array();
+I[9][3][0]=new Array('A. Outbound flows are sent to a configured syslog server if a syslog sender is configured for flows.','',0,0,1);
+I[9][3][1]=new Array('B. The hits counter within this section is now enabled.','',0,0,1);
+I[9][3][2]=new Array('C. This firewall rule is now enabled.','',0,0,1);
+I[9][3][3]=new Array('D. Inbound flows are sent to a configured syslog server if a syslog server configured for flows.','',1,100,1);
+I[10]=new Array();I[10][0]=100;
+I[10][1]='';
+I[10][2]='0';
+I[10][3]=new Array();
+I[10][3][0]=new Array('A. A single Meraki Insight license must be configured on network A to gain Web App Health visibility on network B.','',0,0,1);
+I[10][3][1]=new Array('B. A single Meraki Insight license must be configured on network B to gain Web App Health visibility on network B.','',0,0,1);
+I[10][3][2]=new Array('C. A single Meraki Insight license must be configured on network A, and a single license must be configured on network B, to gain Web App Health visibility on network B.','',1,100,1);
+I[10][3][3]=new Array('D. Two Meraki Insight licenses must be configured on network A to gain Web App Health visibility on network B.','',0,0,1);
+I[10][3][4]=new Array('E. Two Meraki Insight licenses must be configured on network A and a single license must be configured on network B, to gain Web App Health visibility on network B.','',0,0,1);
+I[11]=new Array();I[11][0]=100;
+I[11][1]='';
+I[11][2]='3';
+I[11][3]=new Array();
+I[11][3][0]=new Array('A. Currently associated clients stay connected.','',0,0,1);
+I[11][3][1]=new Array('B. New clients can connect.','',0,0,1);
+I[11][3][2]=new Array('C. Currently associated clients are affected by restrictive traffic shaping rules.','',0,0,1);
+I[11][3][3]=new Array('D. New clients cannot connect.','',1,100,1);
+I[11][3][4]=new Array('E. Currently associated clients are disconnected.','',1,100,1);
+I[12]=new Array();I[12][0]=100;
+I[12][1]='';
+I[12][2]='0';
+I[12][3]=new Array();
+I[12][3][0]=new Array('A. manual','',0,0,1);
+I[12][3][1]=new Array('B. Apple Configurator','',0,0,1);
+I[12][3][2]=new Array('C. Sentry enrollment','',0,0,1);
+I[12][3][3]=new Array('D. DEP','',1,100,1);
+I[13]=new Array();I[13][0]=100;
+I[13][1]='';
+I[13][2]='0';
+I[13][3]=new Array();
+I[13][3][0]=new Array('A. 52','',0,0,1);
+I[13][3][1]=new Array('B. 54','',0,0,1);
+I[13][3][2]=new Array('C. 100','',1,100,1);
+I[13][3][3]=new Array('D. 104','',0,0,1);
+I[14]=new Array();I[14][0]=100;
+I[14][1]='';
+I[14][2]='0';
+I[14][3]=new Array();
+I[14][3][0]=new Array('A. starts on the secondary MX appliance and then occurs on the primary MX appliance','',0,0,1);
+I[14][3][1]=new Array('B. starts on both MX appliances at the same time and then reboots both appliances after traffic on the primary MX appliance ceases','',0,0,1);
+I[14][3][2]=new Array('C. starts on both MX appliances at the same time and then immediately reboots both appliances','',0,0,1);
+I[14][3][3]=new Array('D. starts on the primary MX appliance and then occurs on the secondary MX appliance','',1,100,1);
+I[15]=new Array();I[15][0]=100;
+I[15][1]='';
+I[15][2]='0';
+I[15][3]=new Array();
+I[15][3][0]=new Array('A. Only the MX Security Appliances that use VRRP support high availability.','',1,100,1);
+I[15][3][1]=new Array('B. An active/active high-availability pair is recommended for MX Security Appliances.','',0,0,1);
+I[15][3][2]=new Array('C. The MX Security Appliances and MS Series Switches that use VRRP support an active/passive high-availability pair.','',0,0,1);
+I[15][3][3]=new Array('D. The MX Security Appliances and MS Series Switches that use HSRP support an active/passive high-availability pair.','',0,0,1);
+I[16]=new Array();I[16][0]=100;
+I[16][1]='';
+I[16][2]='3';
+I[16][3]=new Array();
+I[16][3][0]=new Array('A. SET','',0,0,1);
+I[16][3][1]=new Array('B. PUT','',1,100,1);
+I[16][3][2]=new Array('C. PATCH','',0,0,1);
+I[16][3][3]=new Array('D. ADD','',0,0,1);
+I[16][3][4]=new Array('E. POST','',1,100,1);
+I[16][3][5]=new Array('F. GET','',1,100,1);
+I[17]=new Array();I[17][0]=100;
+I[17][1]='';
+I[17][2]='0';
+I[17][3]=new Array();
+I[17][3][0]=new Array('A. malware protection','',0,0,1);
+I[17][3][1]=new Array('B. SD-WAN','',0,0,1);
+I[17][3][2]=new Array('C. next-generation firewall','',1,100,1);
+I[17][3][3]=new Array('D. intrusion prevention','',0,0,1);
+I[18]=new Array();I[18][0]=100;
+I[18][1]='';
+I[18][2]='0';
+I[18][3]=new Array();
+I[18][3][0]=new Array('A. The MX appliance performs IDS/IPS for inter-VLAN traffic.','',0,0,1);
+I[18][3][1]=new Array('B. The MX appliance performs AMP for inter-VLAN traffic.','',0,0,1);
+I[18][3][2]=new Array('C. The MX appliance performs data encryption for inter-VLAN traffic.','',1,100,1);
+I[18][3][3]=new Array('D. The MX appliance performs content filtering for inter-VLAN traffic.','',0,0,1);
+I[19]=new Array();I[19][0]=100;
+I[19][1]='';
+I[19][2]='0';
+I[19][3]=new Array();
+I[19][3][0]=new Array('A. POST /organizations/clone/{organizationId}','',0,0,1);
+I[19][3][1]=new Array('B. PUT /organizations/{organizationId}/clone','',0,0,1);
+I[19][3][2]=new Array('C. POST /organizations/{organizationId}/new','',0,0,1);
+I[19][3][3]=new Array('D. POST /organizations/{organizationId}/clone','',1,100,1);
+I[20]=new Array();I[20][0]=100;
+I[20][1]='';
+I[20][2]='0';
+I[20][3]=new Array();
+I[20][3][0]=new Array('A. The "Meraki management" profile is removed. All configuration profiles that Systems Manager pushed remain.','',0,0,1);
+I[20][3][1]=new Array('B. The "Meraki management" profile is removed. All configuration profiles that Systems Manager pushed are also removed.','',1,100,1);
+I[20][3][2]=new Array('C. The "Meraki management" profile is removed and then pushed automatically by Systems Manager','',0,0,1);
+I[20][3][3]=new Array('D. The "Meraki management" profile cannot be removed.','',0,0,1);
+I[21]=new Array();I[21][0]=100;
+I[21][1]='';
+I[21][2]='0';
+I[21][3]=new Array();
+I[21][3][0]=new Array('A. wireless profile installed on an Apple iOS device','',1,100,1);
+I[21][3][1]=new Array('B. wireless profile installed on a Cisco iOS access point','',0,0,1);
+I[21][3][2]=new Array('C. adaptive 802.11r disabled','',0,0,1);
+I[21][3][3]=new Array('D. traffic shaping rule tagging traffic with a DSCP value of 46 to Apple.com','',0,0,1);
+I[22]=new Array();I[22][0]=100;
+I[22][1]='';
+I[22][2]='0';
+I[22][3]=new Array();
+I[22][3][0]=new Array('A. MD5','',1,100,1);
+I[22][3][1]=new Array('B. certificate','',0,0,1);
+I[22][3][2]=new Array('C. plaintext','',0,0,1);
+I[22][3][3]=new Array('D. SHA-1','',0,0,1);
+I[23]=new Array();I[23][0]=100;
+I[23][1]='';
+I[23][2]='0';
+I[23][3]=new Array();
+I[23][3][0]=new Array('A. Content filtering','',0,0,1);
+I[23][3][1]=new Array('B. Bridge mode','',0,0,1);
+I[23][3][2]=new Array('C. 802.11r','',0,0,1);
+I[23][3][3]=new Array('D. Dual band operating with Band Steering','',1,100,1);
+I[24]=new Array();I[24][0]=100;
+I[24][1]='';
+I[24][2]='3';
+I[24][3]=new Array();
+I[24][3][0]=new Array('A. enabling audio compression','',0,0,1);
+I[24][3][1]=new Array('B. installing an SSD memory extension','',0,0,1);
+I[24][3][2]=new Array('C. enabling motion-based retention','',1,100,1);
+I[24][3][3]=new Array('D. enabling maximum retention limit','',0,0,1);
+I[24][3][4]=new Array('E. configuring a recording schedule','',1,100,1);
+I[25]=new Array();I[25][0]=100;
+I[25][1]='';
+I[25][2]='0';
+I[25][3]=new Array();
+I[25][3][0]=new Array('A. The offline device continues to run with its last known configuration until cloud connectivity is restored. ve','',1,100,1);
+I[25][3][1]=new Array('B. The offline device reboots every 5 minutes until connection is restored.','',0,0,1);
+I[25][3][2]=new Array('C. The offline device stops passing traffic.','',0,0,1);
+I[25][3][3]=new Array('D. The offline device tries to form a connection with a local backup server','',0,0,1);
+I[26]=new Array();I[26][0]=100;
+I[26][1]='';
+I[26][2]='0';
+I[26][3]=new Array();
+I[26][3][0]=new Array('A. Wireless > Monitor > Access Points > AP > RF','',1,100,1);
+I[26][3][1]=new Array('B. Wireless > Configure > Radio Settings','',0,0,1);
+I[26][3][2]=new Array('C. Wireless > Monitor > Wireless Health','',0,0,1);
+I[26][3][3]=new Array('D. Wireless > Monitor > RF Spectrum','',0,0,1);
+I[27]=new Array();I[27][0]=100;
+I[27][1]='';
+I[27][2]='0';
+I[27][3]=new Array();
+I[27][3][0]=new Array('A. An AP does not have a wired connection to the network.','',0,0,1);
+I[27][3][1]=new Array('B. An AP cannot connect to the default gateway.','',0,0,1);
+I[27][3][2]=new Array('C. An AP has never connected to the Meraki Cloud Controller.','',1,100,1);
+I[27][3][3]=new Array('D. An AP has Site Survey mode enabled.','',0,0,1);
+I[28]=new Array();I[28][0]=100;
+I[28][1]='';
+I[28][2]='0';
+I[28][3]=new Array();
+I[28][3][0]=new Array('A. zone exclusion','',0,0,1);
+I[28][3][1]=new Array('B. privacy window','',1,100,1);
+I[28][3][2]=new Array('C. area or interest','',0,0,1);
+I[28][3][3]=new Array('D. sensor crop','',0,0,1);
+I[28][3][4]=new Array('E. restricted mode','',0,0,1);
+I[29]=new Array();I[29][0]=100;
+I[29][1]='';
+I[29][2]='0';
+I[29][3]=new Array();
+I[29][3][0]=new Array('A. MS Switch','',0,0,1);
+I[29][3][1]=new Array('B. Meraki Insight','',0,0,1);
+I[29][3][2]=new Array('C. MR Access Point','',1,100,1);
+I[29][3][3]=new Array('D. MV Smart Camera','',0,0,1);
+I[30]=new Array();I[30][0]=100;
+I[30][1]='';
+I[30][2]='0';
+I[30][3]=new Array();
+I[30][3][0]=new Array('A. spanning-tree state','',0,0,1);
+I[30][3][1]=new Array('B. time synchronization state','',0,0,1);
+I[30][3][2]=new Array('C. DHCP association database','',1,100,1);
+I[30][3][3]=new Array('D. stateful firewall database','',0,0,1);
+I[31]=new Array();I[31][0]=100;
+I[31][1]='';
+I[31][2]='0';
+I[31][3]=new Array();
+I[31][3][0]=new Array('A. highest VLAN ID that is configured and set to NO to use VPN','',0,0,1);
+I[31][3][1]=new Array('B. lowest VLAN ID that is configured and set to YES to use VPN','',0,0,1);
+I[31][3][2]=new Array('C. highest VLAN ID that is configured and set to YES to use VPN','',1,100,1);
+I[31][3][3]=new Array('D. lowest VLAN ID configured and set to NO to use VPN','',0,0,1);
+I[32]=new Array();I[32][0]=100;
+I[32][1]='';
+I[32][2]='0';
+I[32][3]=new Array();
+I[32][3][0]=new Array('A. The application requires the most recent iOS version.','',0,0,1);
+I[32][3][1]=new Array('B. The device is locked with a passcode.','',1,100,1);
+I[32][3][2]=new Array('C. The device cannot connect to Apple servers.','',0,0,1);
+I[32][3][3]=new Array('D. The device cannot connect to Cisco Meraki servers.','',0,0,1);
+I[33]=new Array();I[33][0]=100;
+I[33][1]='';
+I[33][2]='0';
+I[33][3]=new Array();
+I[33][3][0]=new Array('A. data under Security & SD WAN > Appliance Status > Uplink > Live Data','',0,0,1);
+I[33][3][1]=new Array('B. total historical throughput of an uplink','',0,0,1);
+I[33][3][2]=new Array('C. total number of devices that are actively passing traffic','',0,0,1);
+I[33][3][3]=new Array('D. value under Security & SD WAN > SD WAN & Traffic Shaping > Uplink Configuration','',1,100,1);
+I[34]=new Array();I[34][0]=100;
+I[34][1]='';
+I[34][2]='0';
+I[34][3]=new Array();
+I[34][3][0]=new Array('A. No configuration step is necessary; automatic updating is the default behavior','',0,0,1);
+I[34][3][1]=new Array('B. Configure automatic updating of iOS devices in the Meraki installed profile.','',1,100,1);
+I[34][3][2]=new Array('C. Create a security policy that enables automatic updates.','',0,0,1);
+I[34][3][3]=new Array('D. Create a profile with automatic update enabled and apply it to iOS devices','',0,0,1);
+I[35]=new Array();I[35][0]=100;
+I[35][1]='';
+I[35][2]='3';
+I[35][3]=new Array();
+I[35][3][0]=new Array('A. cloud-managed','',1,100,1);
+I[35][3][1]=new Array('B. on premises','',0,0,1);
+I[35][3][2]=new Array('C. hybrid','',1,100,1);
+I[35][3][3]=new Array('D. Cisco Catalyst','',0,0,1);
+I[35][3][4]=new Array('E. Cisco Prime Infrastructure','',0,0,1);
+I[36]=new Array();I[36][0]=100;
+I[36][1]='';
+I[36][2]='3';
+I[36][3]=new Array();
+I[36][3][0]=new Array('A. Controller disconnection behavior','',1,100,1);
+I[36][3][1]=new Array('B. Captive Portal strength','',1,100,1);
+I[36][3][2]=new Array('C. Simultaneous logins','',0,0,1);
+I[36][3][3]=new Array('D. Firewall & traffic shaping','',0,0,1);
+I[36][3][4]=new Array('E. RADIUS for splash page settings','',0,0,1);
+I[37]=new Array();I[37][0]=100;
+I[37][1]='';
+I[37][2]='0';
+I[37][3]=new Array();
+I[37][3][0]=new Array('A. WebEx traffic will prefer WAN 2 as long as it meets the thresholds in the "Conf" performance class.','',0,0,1);
+I[37][3][1]=new Array('B. WebEx traffic will prefer WAN 1 as it is the primary uplink.','',1,100,1);
+I[37][3][2]=new Array('C. WebEx traffic will prefer WAN 2 as long as it is up.','',0,0,1);
+I[37][3][3]=new Array('D. WebEx traffic will be load-balanced between both active WAN links','',0,0,1);
+I[38]=new Array();I[38][0]=100;
+I[38][1]='';
+I[38][2]='3';
+I[38][3]=new Array();
+I[38][3][0]=new Array('A. licenses that are in the wrong network','',0,0,1);
+I[38][3][1]=new Array('B. more hardware devices than device licenses','',1,100,1);
+I[38][3][2]=new Array('C. expired device license','',1,100,1);
+I[38][3][3]=new Array('D. licenses that do not match the serial numbers in the organization','',0,0,1);
+I[38][3][4]=new Array('E. MR licenses that do not match the MR models in the organization','',0,0,1);
+I[39]=new Array();I[39][0]=100;
+I[39][1]='';
+I[39][2]='3';
+I[39][3]=new Array();
+I[39][3][0]=new Array('A. Change the primary uplink to "none".','',0,0,1);
+I[39][3][1]=new Array('B. Add an internet traffic preference that defines the load-balancing ratio as 4:1.','',0,0,1);
+I[39][3][2]=new Array('C. Enable load balancing.','',1,100,1);
+I[39][3][3]=new Array('D. Set the speed of the cellular uplink to zero.','',0,0,1);
+I[39][3][4]=new Array('E. Change the assigned speeds of WAN 1 and WAN 2 so that the ratio is 4:1.','',1,100,1);
+I[40]=new Array();I[40][0]=100;
+I[40][1]='';
+I[40][2]='0';
+I[40][3]=new Array();
+I[40][3][0]=new Array('A. It serves as the boundary of the administrative domain of the account including license, inventory, and user management.','',1,100,1);
+I[40][3][1]=new Array('B. It is defined by the network construct of the user and categorized as either SME (small medium enterprise), campus, or a distributed enterprise','',0,0,1);
+I[40][3][2]=new Array('C. It contains Cisco Meraki devices, their configurations, statistics, and any client device information.','',0,0,1);
+I[40][3][3]=new Array('D. It consists of multiple service provider resources including support ticket management and API sandboxes','',0,0,1);
+I[41]=new Array();I[41][0]=100;
+I[41][1]='';
+I[41][2]='3';
+I[41][3]=new Array();
+I[41][3][0]=new Array('A. For IPsec tunneling, peers use high UDP ports within the 32768 to 61000 range.','',1,100,1);
+I[41][3][1]=new Array('B. Peers contact the VPN registry at UDP port 9350.','',1,100,1);
+I[41][3][2]=new Array('C. For IPsec tunneling, peers use high TCP ports within the 32768 to 61000 range.','',0,0,1);
+I[41][3][3]=new Array('D. Peers contact the VPN registry at TCP port 9350.','',0,0,1);
+I[41][3][4]=new Array('E. For IPsec tunneling, peers use UDP ports 500 and 4500.','',0,0,1);
+I[42]=new Array();I[42][0]=100;
+I[42][1]='';
+I[42][2]='0';
+I[42][3]=new Array();
+I[42][3][0]=new Array('A. The configuration change in the bound network is combined with the template configuration inside the template.','',1,100,1);
+I[42][3][1]=new Array('B. The more restrictive configuration is preferred.','',0,0,1);
+I[42][3][2]=new Array('C. The configuration change in the bound network overrides the template configuration.','',0,0,1);
+I[42][3][3]=new Array('D. The template configuration overrides the configuration change in the bound network.','',0,0,1);
+I[43]=new Array();I[43][0]=100;
+I[43][1]='';
+I[43][2]='0';
+I[43][3]=new Array();
+I[43][3][0]=new Array('A. 26','',0,0,1);
+I[43][3][1]=new Array('B. 28','',1,100,1);
+I[43][3][2]=new Array('C. 30','',0,0,1);
+I[43][3][3]=new Array('D. 32','',0,0,1);
+I[44]=new Array();I[44][0]=100;
+I[44][1]='';
+I[44][2]='0';
+I[44][3]=new Array();
+I[44][3][0]=new Array('A. preshared key','',0,0,1);
+I[44][3][1]=new Array('B. WPA2-enterprise with my RADIUS server','',1,100,1);
+I[44][3][2]=new Array('C. splash page with my RADIUS server','',0,0,1);
+I[44][3][3]=new Array('D. MAC-based access control with RADIUS server','',0,0,1);
+I[45]=new Array();I[45][0]=100;
+I[45][1]='';
+I[45][2]='0';
+I[45][3]=new Array();
+I[45][3][0]=new Array('A. Wireless > Configure > Access Control','',1,100,1);
+I[45][3][1]=new Array('B. Wireless > Configure > Splash page','',0,0,1);
+I[45][3][2]=new Array('C. Wireless > Configure > Firewall & Traffic Shaping','',0,0,1);
+I[45][3][3]=new Array('D. Wireless > Configure > SSIDs','',0,0,1);
+I[46]=new Array();I[46][0]=100;
+I[46][1]='';
+I[46][2]='0';
+I[46][3]=new Array();
+I[46][3][0]=new Array('A. The "Meraki Management" profile cannot be removed.','',0,0,1);
+I[46][3][1]=new Array('B. The "Meraki Management" profile is removed and then pushed automatically by Systems Manager.','',0,0,1);
+I[46][3][2]=new Array('C. The "Meraki Management" profile is removed. All the profiles that Systems Manager pushed are also removed.','',1,100,1);
+I[46][3][3]=new Array('D. The "Meraki Management" profile is removed. All the profiles Systems Manager pushed remain.','',0,0,1);
+I[47]=new Array();I[47][0]=100;
+I[47][1]='';
+I[47][2]='0';
+I[47][3]=new Array();
+I[47][3][0]=new Array('A. quarantine','',0,0,1);
+I[47][3][1]=new Array('B. prevention','',1,100,1);
+I[47][3][2]=new Array('C. detection','',0,0,1);
+I[47][3][3]=new Array('D. blocking','',0,0,1);
+I[48]=new Array();I[48][0]=100;
+I[48][1]='';
+I[48][2]='3';
+I[48][3]=new Array();
+I[48][3][0]=new Array('A. Maximum Jitter','',0,0,1);
+I[48][3][1]=new Array('B. Total Bandwidth Usage','',0,0,1);
+I[48][3][2]=new Array('C. Maximum Latency','',0,0,1);
+I[48][3][3]=new Array('D. Per-flow Goodput','',1,100,1);
+I[48][3][4]=new Array('E. Application Response Time','',1,100,1);
+I[49]=new Array();I[49][0]=100;
+I[49][1]='';
+I[49][2]='0';
+I[49][3]=new Array();
+I[49][3][0]=new Array('A. An MX Security Appliance is not required as a concentrator.','',1,100,1);
+I[49][3][1]=new Array('B. An MX Security Appliance is required as a concentrator.','',0,0,1);
+I[49][3][2]=new Array('C. All wireless client traffic can be split-tunneled.','',0,0,1);
+I[49][3][3]=new Array('D. All wireless client traffic is tunneled.','',0,0,1);
+I[50]=new Array();I[50][0]=100;
+I[50][1]='';
+I[50][2]='0';
+I[50][3]=new Array();
+I[50][3][0]=new Array('A. Devices are configured in the cloud on first use and then managed locally after they are set up','',0,0,1);
+I[50][3][1]=new Array('B. All Meraki devices are managed locally by default','',0,0,1);
+I[50][3][2]=new Array('C. Management data flows to the Cisco Meraki cloud and user traffic flows directly to its destination on the LAN or across the WAN.','',1,100,1);
+I[50][3][3]=new Array('D. All data flows through the Cisco Meraki cloud.','',0,0,1);
+I[51]=new Array();I[51][0]=100;
+I[51][1]='';
+I[51][2]='0';
+I[51][3]=new Array();
+I[51][3][0]=new Array('A. responses that the MX appliance receives on the connectivity-testing hostnames on the Insight > Web App Health page','',0,0,1);
+I[51][3][1]=new Array('B. responses that the MX appliance receives on the connectivity-testing IP addresses on the Security & SD-WAN > Firewall page','',0,0,1);
+I[51][3][2]=new Array('C. responses that the MX appliance receives on the connectivity-testing IP address that is configured on the Security & SD-WAN > SD-WAN & Traffic Shaping page','',1,100,1);
+I[51][3][3]=new Array('D. responses that the MX appliance receives on the connectivity-testing IP addresses on the Help > Firewall info page','',0,0,1);
+I[52]=new Array();I[52][0]=100;
+I[52][1]='';
+I[52][2]='0';
+I[52][3]=new Array();
+I[52][3][0]=new Array('A. Configuring the preserved event number to maximize logging.','',0,0,1);
+I[52][3][1]=new Array('B. Configuring the preserved event period to unlimited.','',0,0,1);
+I[52][3][2]=new Array('C. Configuring a syslog server for the network.','',1,100,1);
+I[52][3][3]=new Array('D. Configuring Dashboard logging to preserve only certain event types.','',0,0,1);
+I[53]=new Array();I[53][0]=100;
+I[53][1]='';
+I[53][2]='0';
+I[53][3]=new Array();
+I[53][3][0]=new Array('A. when automation capabilities are needed','',0,0,1);
+I[53][3][1]=new Array('B. when proactive alerts for critical events must be generated','',0,0,1);
+I[53][3][2]=new Array('C. when organization-wide information must be collected','',0,0,1);
+I[53][3][3]=new Array('D. when information such as flows and client connectivity must be gathered','',1,100,1);
+I[54]=new Array();I[54][0]=100;
+I[54][1]='';
+I[54][2]='0';
+I[54][3]=new Array();
+I[54][3][0]=new Array('A. Add a deny any/any firewall rule to the end of the firewall rules.','',0,0,1);
+I[54][3][1]=new Array('B. Remove the connection from Internet 1.','',0,0,1);
+I[54][3][2]=new Array('C. Physically disconnect all LAN ports.','',1,100,1);
+I[54][3][3]=new Array('D. Configure the MX appliance to Routed mode on the Addressing & VLANS page','',0,0,1);
+I[55]=new Array();I[55][0]=100;
+I[55][1]='';
+I[55][2]='0';
+I[55][3]=new Array();
+I[55][3][0]=new Array('A. The concentrator gateway (10.128.124.62) is the next hop.','',0,0,1);
+I[55][3][1]=new Array('B. Not enough detail is available to determine the next hop.','',1,100,1);
+I[55][3][2]=new Array('C. The packet is stopped.','',0,0,1);
+I[55][3][3]=new Array('D. The Auto VPN peer "Store 1532 ?appliance" is the next hop','',0,0,1);
+I[56]=new Array();I[56][0]=100;
+I[56][1]='';
+I[56][2]='3';
+I[56][3]=new Array();
+I[56][3][0]=new Array('A. intrusion prevention','',1,100,1);
+I[56][3][1]=new Array('B. site-to-site VPN','',1,100,1);
+I[56][3][2]=new Array('C. secondary uplinks','',0,0,1);
+I[56][3][3]=new Array('D. DHCP','',0,0,1);
+I[56][3][4]=new Array('E. high availability','',0,0,1);
+I[57]=new Array();I[57][0]=100;
+I[57][1]='';
+I[57][2]='3';
+I[57][3]=new Array();
+I[57][3][0]=new Array('A. by defining a range of serial numbers','',0,0,1);
+I[57][3][1]=new Array('B. by defining the scope','',1,100,1);
+I[57][3][2]=new Array('C. by using device tags','',1,100,1);
+I[57][3][3]=new Array('D. by using Wi-Fi tags','',0,0,1);
+I[57][3][4]=new Array('E. by using dynamic IP tags','',0,0,1);
+I[58]=new Array();I[58][0]=100;
+I[58][1]='';
+I[58][2]='0';
+I[58][3]=new Array();
+I[58][3][0]=new Array('A. All flows egress via WAN 1.','',0,0,1);
+I[58][3][1]=new Array('B. All flows alternate in a 1:1 ratio.','',1,100,1);
+I[58][3][2]=new Array('C. All flows alternate in a 5:1 ratio.','',0,0,1);
+I[58][3][3]=new Array('D. All flows alternate in a 2:1 ratio','',0,0,1);
+I[59]=new Array();I[59][0]=100;
+I[59][1]='';
+I[59][2]='0';
+I[59][3]=new Array();
+I[59][3][0]=new Array('A. Auto VPN route 172.18.0.0/16','',0,0,1);
+I[59][3][1]=new Array('B. non-Meraki VPN route 172.18.24.0/24','',1,100,1);
+I[59][3][2]=new Array('C. directly connected 172.18.16.0/20','',0,0,1);
+I[59][3][3]=new Array('D. static route 172.16.0.0/12','',0,0,1);
+I[60]=new Array();I[60][0]=100;
+I[60][1]='';
+I[60][2]='0';
+I[60][3]=new Array();
+I[60][3][0]=new Array('A. Channel 48 utilization is at 84 percent.','',0,0,1);
+I[60][3][1]=new Array('B. The client is using 20 MHz channel width to connect.','',1,100,1);
+I[60][3][2]=new Array('C. Non-802.11 traffic of 18 percent indicates poor AP placement.','',0,0,1);
+I[60][3][3]=new Array('D. The client is connected to the secondary radio of the AP instead of the primary radio.','',0,0,1);
+I[61]=new Array();I[61][0]=100;
+I[61][1]='';
+I[61][2]='3';
+I[61][3]=new Array();
+I[61][3][0]=new Array('A. The custom application uses TLS on any ports.','',0,0,1);
+I[61][3][1]=new Array('B. The custom application uses HTTP on port 8080.','',1,100,1);
+I[61][3][2]=new Array('C. The custom application uses HTTPS on TCP 443.','',1,100,1);
+I[61][3][3]=new Array('D. The custom application uses SMB/CIFS.','',0,0,1);
+I[61][3][4]=new Array('E. The custom application uses HTTPS on port 8080.','',0,0,1);
+I[62]=new Array();I[62][0]=100;
+I[62][1]='';
+I[62][2]='0';
+I[62][3]=new Array();
+I[62][3][0]=new Array('A. 26','',0,0,1);
+I[62][3][1]=new Array('B. 28','',1,100,1);
+I[62][3][2]=new Array('C. 30','',0,0,1);
+I[62][3][3]=new Array('D. 32','',0,0,1);
+I[63]=new Array();I[63][0]=100;
+I[63][1]='';
+I[63][2]='0';
+I[63][3]=new Array();
+I[63][3][0]=new Array('A. 2','',0,0,1);
+I[63][3][1]=new Array('B. 3','',1,100,1);
+I[63][3][2]=new Array('C. 4','',0,0,1);
+I[63][3][3]=new Array('D. 5','',0,0,1);
+I[64]=new Array();I[64][0]=100;
+I[64][1]='';
+I[64][2]='0';
+I[64][3]=new Array();
+I[64][3][0]=new Array('A. number of SSIDs','',0,0,1);
+I[64][3][1]=new Array('B. maximum beamforming','',1,100,1);
+I[64][3][2]=new Array('C. band selection','',0,0,1);
+I[64][3][3]=new Array('D. minimum bitrate','',0,0,1);
+I[65]=new Array();I[65][0]=100;
+I[65][1]='';
+I[65][2]='0';
+I[65][3]=new Array();
+I[65][3][0]=new Array('A. Systems Manager network ID','',0,0,1);
+I[65][3][1]=new Array('B. Android Enterprise utilizing a Work Profile','',1,100,1);
+I[65][3][2]=new Array('C. Android Business utilizing a BYOD Profile','',0,0,1);
+I[65][3][3]=new Array('D. Systems Manager container ID','',0,0,1);
+I[66]=new Array();I[66][0]=100;
+I[66][1]='';
+I[66][2]='0';
+I[66][3]=new Array();
+I[66][3][0]=new Array('A. 4/10 packets','',0,0,1);
+I[66][3][1]=new Array('B. 2/10 packets','',0,0,1);
+I[66][3][2]=new Array('C. 2/7 packets','',1,100,1);
+I[66][3][3]=new Array('D. 5/15','',0,0,1);
+I[66][3][4]=new Array('packets','',0,0,1);
+I[67]=new Array();I[67][0]=100;
+I[67][1]='';
+I[67][2]='0';
+I[67][3]=new Array();
+I[67][3][0]=new Array('A. 10 milliseconds','',0,0,1);
+I[67][3][1]=new Array('B. 100 milliseconds','',0,0,1);
+I[67][3][2]=new Array('C. 1 second','',1,100,1);
+I[67][3][3]=new Array('D. 10 seconds','',0,0,1);
+I[68]=new Array();I[68][0]=100;
+I[68][1]='';
+I[68][2]='0';
+I[68][3]=new Array();
+I[68][3][0]=new Array('A. Unenroll Device','',0,0,1);
+I[68][3][1]=new Array('B. Clear Pushed Data','',0,0,1);
+I[68][3][2]=new Array('C. Selective Wipe','',1,100,1);
+I[68][3][3]=new Array('D. Erase Device','',0,0,1);
+I[69]=new Array();I[69][0]=100;
+I[69][1]='';
+I[69][2]='0';
+I[69][3]=new Array();
+I[69][3][0]=new Array('A. WAN1 tunnel latency is 20 ms or more, irrespective of WAN2 tunnel performance.','',0,0,1);
+I[69][3][1]=new Array('B. WAN1 tunnel latency is 20 ms or more, and WAN2 tunnel meets the configured performance criteria.','',1,100,1);
+I[69][3][2]=new Array('C. WAN1 tunnel latency is 20 ms or less, irrespective of WAN2 tunnel performance.','',0,0,1);
+I[69][3][3]=new Array('D. WAN1 tunnel latency is 20 ms or less, and WAN2 tunnel meets the configured performance criteria.','',0,0,1);
+
+
+function StartUp(){
+
+//If there's only one question, no need for question navigation controls
+	if (QsToShow < 2){
+		document.getElementById('QNav').style.display = 'none';
+	}
+	
+//Stash the instructions so they can be redisplayed
+	strInstructions = document.getElementById('InstructionsDiv').innerHTML;
+	
+
+	
+
+	
+
+	PreloadImages('../../Meraki/01JPG.JPG','../../Meraki/02.JPG','../../Meraki/03.PNG','../../Meraki/04.PNG','../../Meraki/05.PNG','../../Meraki/06.PNG','../../Meraki/08.PNG','../../Meraki/09.PNG','../../Meraki/10.PNG','../../Meraki/11.PNG','../../Meraki/12.PNG','../../Meraki/13.PNG','../../Meraki/14.PNG','../../Meraki/15.PNG','../../Meraki/16.PNG','../../Meraki/17.PNG','../../Meraki/18.PNG','../../Meraki/19.PNG','../../Meraki/20.PNG','../../Meraki/22.PNG');
+
+	
+	CompleteEmptyFeedback();
+
+	SetUpQuestions();
+	ClearTextBoxes();
+	CreateStatusArray();
+	
+
+	
+//Check search string for q parameter
+	if (document.location.search.length > 0){
+		if (ShuffleQs == false){
+			var JumpTo = parseInt(document.location.search.substring(1,document.location.search.length))-1;
+			if (JumpTo <= QsToShow){
+				ChangeQ(JumpTo);
+			}
+		}
+	}
+//Undocumented function added 10/12/2004
+	ShowSpecialReadingForQuestion();
+}
+
+function ShowHideQuestions(){
+	document.getElementById('ShowMethodButton').style.display = 'none';
+	if (ShowingAllQuestions == false){
+		for (var i=0; i<QArray.length; i++){
+				QArray[i].style.display = '';
+			}
+		document.getElementById('Questions').style.listStyleType = 'decimal';
+		document.getElementById('OneByOneReadout').style.display = 'none';
+		document.getElementById('ShowMethodButton').innerHTML = ShowOneByOneCaption;
+		ShowingAllQuestions = true;
+	}
+	else{
+		for (var i=0; i<QArray.length; i++){
+				if (i != CurrQNum){
+					QArray[i].style.display = 'none';
+				}
+			}
+		document.getElementById('Questions').style.listStyleType = 'none';
+		document.getElementById('OneByOneReadout').style.display = '';
+		document.getElementById('ShowMethodButton').innerHTML = ShowAllQuestionsCaption;
+		ShowingAllQuestions = false;	
+	}
+	document.getElementById('ShowMethodButton').style.display = 'inline';
+}
+
+function CreateStatusArray(){
+	var QNum, ANum;
+//For each item in the item array
+	for (QNum=0; QNum<I.length; QNum++){
+//Check if the question still exists (hasn't been nuked by showing a random selection)
+		if (document.getElementById('Q_' + QNum) != null){
+			State[QNum] = new Array();
+			State[QNum][0] = -1; //Score for this q; -1 shows question not done yet
+			State[QNum][1] = new Array(); //answers
+			for (ANum = 0; ANum<I[QNum][3].length; ANum++){
+				State[QNum][1][ANum] = 0; //answer not chosen yet; when chosen, will store its position in the series of choices
+			}
+			State[QNum][2] = 0; //tries at this q so far
+			State[QNum][3] = 0; //incrementing percent-correct values of selected answers
+			State[QNum][4] = 0; //penalties incurred for hints
+			State[QNum][5] = ''; //Sequence of answers chosen by number
+		}
+		else{
+			State[QNum] = null;
+		}
+	}
+}
+
+
+
+function CheckMCAnswer(QNum, ANum, Btn){
+//if question doesn't exist, bail
+	if (State[QNum].length < 1){return;}
+	
+//Get the feedback
+	Feedback = I[QNum][3][ANum][1];
+	
+//Now show feedback and bail if question already complete
+	if (State[QNum][0] > -1){
+//Add an extra message explaining that the question
+// is finished if defined by the user
+		if (strQuestionFinished.length > 0){Feedback += '<br />' + strQuestionFinished;}
+//Show the feedback
+		ShowMessage(Feedback);
+//New for 6.2.2.1: If you want to mark an answer as correct even when it's the final choice, uncomment this line.
+//		if (I[QNum][3][ANum][2] >= 1){Btn.innerHTML = CorrectIndicator;}else{Btn.innerHTML = IncorrectIndicator;}	
+		return;
+	}
+	
+//Hide the button while processing
+	Btn.style.display = 'none';
+
+//Increment the number of tries
+	State[QNum][2]++;
+	
+//Add the percent-correct value of this answer
+	State[QNum][3] += I[QNum][3][ANum][3];
+	
+//Store the try number in the answer part of the State array, for tracking purposes
+	State[QNum][1][ANum] = State[QNum][2];
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	State[QNum][5] += String.fromCharCode(65+ANum);
+	
+//Should this answer be accepted as correct?
+	if (I[QNum][3][ANum][2] < 1){
+//It's wrong
+
+//Mark the answer
+		Btn.innerHTML = IncorrectIndicator;
+		
+//Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+		
+//Check whether this leaves just one MC answer unselected, in which case the Q is terminated
+		var RemainingAnswer = FinalAnswer(QNum);
+		if (RemainingAnswer > -1){
+//Behave as if the last answer had been selected, but give no credit for it
+//Increment the number of tries
+			State[QNum][2]++;		
+		
+//Calculate the score for this question
+			CalculateMCQuestionScore(QNum);
+			
+//Get the overall score and add it to the feedback
+			CalculateOverallScore();
+//New for 6.2.2.1
+			var QsDone = CheckQuestionsCompleted();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's right
+//Mark the answer
+		Btn.innerHTML = CorrectIndicator;
+				
+//Calculate the score for this question
+		CalculateMCQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+
+//Get the overall score and add it to the feedback
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+		}
+		else{
+			WriteToInstructions(QsDone);
+		}
+	}
+	
+//Show the button again
+	Btn.style.display = 'inline';
+	
+//Finally, show the feedback	
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMCQuestionScore(QNum){
+	var Tries = State[QNum][2] + State[QNum][4]; //include tries and hint penalties
+	var PercentCorrect = State[QNum][3];
+	var TotAns = GetTotalMCAnswers(QNum);
+	var HintPenalties = State[QNum][4];
+	
+//Make sure it's not already complete
+
+	if (State[QNum][0] < 0){
+//Allow for Hybrids
+		if (HintPenalties >= 1){
+			State[QNum][0] = 0;
+		}
+		else{
+//This line calculates the score for this question
+			if (TotAns == 1){
+				State[QNum][0] = 1;
+			}
+			else{
+				State[QNum][0] = ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
+			}
+		}
+//Fix for Safari bug added for version 6.0.3.42 (negative infinity problem)
+		if ((State[QNum][0] < 0)||(State[QNum][0] == Number.NEGATIVE_INFINITY)){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+function GetTotalMCAnswers(QNum){
+	var Result = 0;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			Result++;
+		}
+	}
+	return Result;
+}
+
+function FinalAnswer(QNum){
+	var UnchosenAnswers = 0;
+	var FinalAnswer = -1;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		if (I[QNum][3][ANum][4] == 1){ //This is an MC answer
+			if (State[QNum][1][ANum] < 1){ //This answer hasn't been chosen yet
+				UnchosenAnswers++;
+				FinalAnswer = ANum;
+			}
+		}
+	}
+	if (UnchosenAnswers == 1){
+		return FinalAnswer;
+	}
+	else{
+		return -1;
+	}
+}
+
+
+
+
+
+function CheckMultiSelAnswer(QNum){
+//bail if question doesn't exist or exercise finished
+	if ((State[QNum].length < 1)||(Finished == true)){return;}
+
+//Increment the tries for this question
+	State[QNum][2]++;
+	
+	var ShouldBeChecked;
+	var Matches = 0;
+	if (State[QNum][5].length > 0){State[QNum][5] += ' | ';}
+	
+//Check if there are any mismatches
+	Feedback = '';
+	var CheckBox = null;
+	for (var ANum=0; ANum<I[QNum][3].length; ANum++){
+		CheckBox = document.getElementById('Q_' + QNum + '_' + ANum + '_Chk');
+		if (CheckBox.checked == true){
+			State[QNum][5] += 'Y';
+		}
+		else{
+			State[QNum][5] += 'N';
+		}
+		ShouldBeChecked = (I[QNum][3][ANum][2] == 1);
+		if (ShouldBeChecked == CheckBox.checked){
+			Matches++;
+		}
+		else{
+			Feedback = I[QNum][3][ANum][1];
+		}
+	}
+//Add the hit readout
+	Feedback = Matches + ' / ' + I[QNum][3].length + '<br />' + Feedback;
+	if (Matches == I[QNum][3].length){
+//It's right
+		CalculateMultiSelQuestionScore(QNum);
+		
+//New for 6.2.2.0
+		var QsDone = CheckQuestionsCompleted();
+		
+		if (ContinuousScoring == true){
+			CalculateOverallScore();
+			if ((ContinuousScoring == true)||(Finished == true)){
+				Feedback += '<br />' + YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone;
+				WriteToInstructions(YourScoreIs + ' ' + Score + '%.' + '<br />' + QsDone);
+			}
+			else{
+				WriteToInstructions(QsDone);
+			}
+		}
+	}
+	else{
+//It's wrong -- Remove any previous score unless exercise is finished (6.0.3.8+)
+		if (Finished == false){
+			WriteToInstructions(strInstructions);
+		}	
+	}
+		
+//Show the feedback
+	ShowMessage(Feedback);
+	
+//Check whether all questions are now done
+	CheckFinished();
+}
+
+function CalculateMultiSelQuestionScore(QNum){
+	var Tries = State[QNum][2];
+	var TotAns = State[QNum][1].length;
+	
+//Make sure it's not already complete
+	if (State[QNum][0] < 0){
+		State[QNum][0] = (TotAns - (Tries-1)) / TotAns;
+		if (State[QNum][0] < 0){
+			State[QNum][0] = 0;
+		}
+	}
+}
+
+
+
+function CalculateOverallScore(){
+	var TotalWeighting = 0;
+	var TotalScore = 0;
+	
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] > -1){
+				TotalWeighting += I[QNum][0];
+				TotalScore += (I[QNum][0] * State[QNum][0]);
+			}
+		}
+	}
+	if (TotalWeighting > 0){
+		Score = Math.floor((TotalScore/TotalWeighting)*100);
+	}
+	else{
+//if TotalWeighting is 0, no questions so far have any value, so 
+//no penalty should be shown.
+		Score = 100; 
+	}
+}
+
+//New for 6.2.2.0
+function CheckQuestionsCompleted(){
+	if (ShowCompletedSoFar == false){return '';}
+	var QsCompleted = 0;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] >= 0){
+				QsCompleted++;
+			}
+		}
+	}
+//Fixes for 6.2.2.2
+	if (QsCompleted >= QArray.length){
+		return ExerciseCompleted;
+	}
+	else{
+		return CompletedSoFar + ' ' + QsCompleted + '/' + QArray.length + '.';
+	}
+}
+
+function CheckFinished(){
+	var FB = '';
+	var AllDone = true;
+	for (var QNum=0; QNum<State.length; QNum++){
+		if (State[QNum] != null){
+			if (State[QNum][0] < 0){
+				AllDone = false;
+			}
+		}
+	}
+	if (AllDone == true){
+	
+//Report final score and submit if necessary
+		CalculateOverallScore();
+		FB = YourScoreIs + ' ' + Score + '%.';
+		if (ShowCorrectFirstTime == true){
+			var CFT = 0;
+			for (QNum=0; QNum<State.length; QNum++){
+				if (State[QNum] != null){
+					if (State[QNum][0] >= 1){
+						CFT++;
+					}
+				}
+			}
+			FB += '<br />' + CorrectFirstTime + ' ' + CFT + '/' + QsToShow;
+		}
+		
+//New for 6.2.2.0
+		FB += '<br />' + ExerciseCompleted;
+		
+		WriteToInstructions(FB);
+		
+		Finished == true;
+
+
+
+
+		TimeOver = true;
+		Locked = true;
+		
+
+
+		Finished = true;
+		Detail = '<?xml version="1.0"?><hpnetresult><fields>';
+		for (QNum=0; QNum<State.length; QNum++){
+			if (State[QNum] != null){
+				if (State[QNum][5].length > 0){
+					Detail += '<field><fieldname>Question #' + (QNum+1) + '</fieldname><fieldtype>question-tracking</fieldtype><fieldlabel>Q ' + (QNum+1) + '</fieldlabel><fieldlabelid>QuestionTrackingField</fieldlabelid><fielddata>' + State[QNum][5] + '</fielddata></field>';
+				}
+			}
+		}
+		Detail += '</fields></hpnetresult>';
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+//-->
+
+//]]>
+
+</script>
+
+
 </head>
-<body>
-<div class="NavButtonBar">&#160;</div>
+
+<body onload="StartUp()" id="TheBody" >
+
+<!-- BeginTopNavButtons -->
+
+
+<div class="NavButtonBar" id="TopNavBar">
+
+
+
+
+<button class="NavButton" onclick="location='contents.htm'; return false;"> Index </button>
+
+
+
+<button class="NavButton" onclick="location='nextpage.htm'; return false;">=&gt;</button>
+
+
+</div>
+
+
+
+<!-- EndTopNavButtons -->
 
 <div class="Titles">
-	<h2 class="ExerciseTitle"></h2>
+	<h2 class="ExerciseTitle">Meraki</h2>
+
+	<h3 class="ExerciseSubtitle">Quiz</h3>
+
+
+
 </div>
 
-<div style="text-align: center;">
-<div class="IndexDiv">
-<ul class="Index">
-
-<li><a href="Meraki_test.htm"> Engineering Cisco Meraki Solutions 500-220</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki1.htm">Drag and drop the settings from the left into the boxes on the right to indicate if the setting will be<br />cloned or not cloned using the Cisco Meraki MS switch cloning feature.</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki2.htm">Drag and drop the descriptions from the left onto the corresponding MX operation mode on the right</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki3.htm">Drag and drop the steps from the left into the sequence on the rigth to manage device control, according to Cisco Meraki best practice</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki4.htm">Drag and drop the descriptions from the left onto the permissions types on the right</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki5.htm">Drag and drop the settings from the left onto the OS system or systems that support in on the right. Settings can be used more than once</a>&#160;&#160;&#160;&#160;&#160;</li><li><a href="Meraki6.htm">Drag and drop the settings from the left onto the availableor non-available methods of applying a group policy to a Cisco Meraki MR access point on the right</a>&#160;&#160;&#160;&#160;&#160;</li>
-
-</ul>
-</div>
+<div id="InstructionsDiv" class="StdDiv">
+	<div id="Instructions"></div>
 </div>
 
-</body></html>
+
+<div id="ContainerDiv">
+
+
+
+<div class="ExerciseContainer">
+
+<div id="QNav" class="QuestionNavigation">
+
+<p style="text-align: right;">
+<button id="ShowMethodButton" class="FuncButton" onclick="ShowHideQuestions(); return false;">Show all questions</button>
+</p>
+
+<div id="OneByOneReadout">
+<button id="PrevQButton" class="FuncButton" onclick="ChangeQ(-1); return false;">&lt;=</button>
+
+<span id="QNumReadout" class="QNum">&#160;</span>
+
+<button id="NextQButton" class="FuncButton" onclick="ChangeQ(1); return false;">=&gt;</button>
+<br />
+</div>
+
+</div>
+ 
+<ol class="QuizQuestions" id="Questions">
+<li class="QuizQuestion" id="Q_0" style="display: none;"><div class="QuestionText">In an organization that uses the Co-Termination licensing model, which two operations enable licenses to be applied? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_0_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_0_0_Chk" class="MSelCheckbox" />A. Renew the Dashboard license.</div></form></li><li id="Q_0_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_0_1_Chk" class="MSelCheckbox" />B. License a network.</div></form></li><li id="Q_0_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_0_2_Chk" class="MSelCheckbox" />C. License more devices.</div></form></li><li id="Q_0_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_0_3_Chk" class="MSelCheckbox" />D. Call Meraki support.</div></form></li><li id="Q_0_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_0_4_Chk" class="MSelCheckbox" />E. Wait for the devices to auto-renew.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(0)">Check</button></li>
+<li class="QuizQuestion" id="Q_1" style="display: none;"><div class="QuestionText">Which two Systems Manager Live tools are available only for Apple Macs and Windows PCs and cannot be used on iOS or Android mobile devices? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_1_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_1_0_Chk" class="MSelCheckbox" />A. OS updates</div></form></li><li id="Q_1_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_1_1_Chk" class="MSelCheckbox" />B. Send notification</div></form></li><li id="Q_1_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_1_2_Chk" class="MSelCheckbox" />C. Selective wipe</div></form></li><li id="Q_1_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_1_3_Chk" class="MSelCheckbox" />D. Screenshot</div></form></li><li id="Q_1_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_1_4_Chk" class="MSelCheckbox" />E. Remote Desktop</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(1)">Check</button></li>
+<li class="QuizQuestion" id="Q_2" style="display: none;"><div class="QuestionText">What happens when an additional seven APs are claimed on this network without adding licenses?<img src="../../Meraki/01JPG.JPG" alt="01JPG.JPG" title="01JPG" width="616" height="396"/></div><ol class="MCAnswers"><li id="Q_2_0"><button class="FuncButton" id="Q_2_0_Btn" onclick="CheckMCAnswer(2,0,this)">?</button>&#160;&#160;A. All APs immediately stop functioning.</li><li id="Q_2_1"><button class="FuncButton" id="Q_2_1_Btn" onclick="CheckMCAnswer(2,1,this)">?</button>&#160;&#160;B. All network devices stop functioning in 30 days.</li><li id="Q_2_2"><button class="FuncButton" id="Q_2_2_Btn" onclick="CheckMCAnswer(2,2,this)">?</button>&#160;&#160;C. One AP Immediately stops functioning.</li><li id="Q_2_3"><button class="FuncButton" id="Q_2_3_Btn" onclick="CheckMCAnswer(2,3,this)">?</button>&#160;&#160;D. All APs stop functioning in 30 days.</li></ol></li>
+<li class="QuizQuestion" id="Q_3" style="display: none;"><div class="QuestionText">Refer to the exhibit. What does the MX Security Appliance send to determine whether VPN traffic exceeds the configured latency threshold in the VoIP custom performance class?<img src="../../Meraki/02.JPG" alt="02.JPG" title="02" width="604" height="445"/></div><ol class="MCAnswers"><li id="Q_3_0"><button class="FuncButton" id="Q_3_0_Btn" onclick="CheckMCAnswer(3,0,this)">?</button>&#160;&#160;A. 1000-byte TCP probes every second, through VPN tunnels that are established over the primary<br />WAN link.</li><li id="Q_3_1"><button class="FuncButton" id="Q_3_1_Btn" onclick="CheckMCAnswer(3,1,this)">?</button>&#160;&#160;B. 100-byte UDP probes every second, through VPN tunnels that are established over every WAN<br />link.</li><li id="Q_3_2"><button class="FuncButton" id="Q_3_2_Btn" onclick="CheckMCAnswer(3,2,this)">?</button>&#160;&#160;C. 100-byte UDP probes every second, through VPN tunnels that are established over the primary<br />WAN link.</li><li id="Q_3_3"><button class="FuncButton" id="Q_3_3_Btn" onclick="CheckMCAnswer(3,3,this)">?</button>&#160;&#160;D. 1000-byte TCP probes every second, through VPN tunnels that are established over every WAN<br />link.</li></ol></li>
+<li class="QuizQuestion" id="Q_4" style="display: none;"><div class="QuestionText">What is the role of the Meraki Dashboard as the service provider when using SAML for single sign-on to the Dashboard?</div><ol class="MCAnswers"><li id="Q_4_0"><button class="FuncButton" id="Q_4_0_Btn" onclick="CheckMCAnswer(4,0,this)">?</button>&#160;&#160;A. The Dashboard generates the SAML request.</li><li id="Q_4_1"><button class="FuncButton" id="Q_4_1_Btn" onclick="CheckMCAnswer(4,1,this)">?</button>&#160;&#160;B. The Dashboard provides user access credentials.</li><li id="Q_4_2"><button class="FuncButton" id="Q_4_2_Btn" onclick="CheckMCAnswer(4,2,this)">?</button>&#160;&#160;C. The Dashboard parses the SAML request and authenticates users.</li><li id="Q_4_3"><button class="FuncButton" id="Q_4_3_Btn" onclick="CheckMCAnswer(4,3,this)">?</button>&#160;&#160;D. The Dashboard generates the SAML response.</li></ol></li>
+<li class="QuizQuestion" id="Q_5" style="display: none;"><div class="QuestionText">Refer to the exhibit. What are two outcomes reflected in the Web App Health application? (Choose two.)<img src="../../Meraki/03.PNG" alt="03.PNG" title="03" width="583" height="468"/></div><ol class="MSelAnswers"><li id="Q_5_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_5_0_Chk" class="MSelCheckbox" />A. Users on both networks may be experiencing issues when attempting to reach Google.</div></form></li><li id="Q_5_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_5_1_Chk" class="MSelCheckbox" />B. Network #1 could not load Google because of a remote server issue.</div></form></li><li id="Q_5_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_5_2_Chk" class="MSelCheckbox" />C. Network #2 had better application performance than Network #1.</div></form></li><li id="Q_5_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_5_3_Chk" class="MSelCheckbox" />D. Network #2 could not load Google because of a local client misconfiguration.</div></form></li><li id="Q_5_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_5_4_Chk" class="MSelCheckbox" />E. Neither network recorded any server-side performance issues.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(5)">Check</button></li>
+<li class="QuizQuestion" id="Q_6" style="display: none;"><div class="QuestionText">What are two organization permission types? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_6_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_6_0_Chk" class="MSelCheckbox" />A. Full</div></form></li><li id="Q_6_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_6_1_Chk" class="MSelCheckbox" />B. Read-only</div></form></li><li id="Q_6_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_6_2_Chk" class="MSelCheckbox" />C. Monitor-only</div></form></li><li id="Q_6_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_6_3_Chk" class="MSelCheckbox" />D. Write</div></form></li><li id="Q_6_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_6_4_Chk" class="MSelCheckbox" />E. Write-only</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(6)">Check</button></li>
+<li class="QuizQuestion" id="Q_7" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which design recommendation should be considered?<img src="../../Meraki/04.PNG" alt="04.PNG" title="04" width="623" height="232"/></div><ol class="MCAnswers"><li id="Q_7_0"><button class="FuncButton" id="Q_7_0_Btn" onclick="CheckMCAnswer(7,0,this)">?</button>&#160;&#160;A. A 25-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 1-<br />hop maximum.</li><li id="Q_7_1"><button class="FuncButton" id="Q_7_1_Btn" onclick="CheckMCAnswer(7,1,this)">?</button>&#160;&#160;B. A 25-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 2-<br />hop maximum.</li><li id="Q_7_2"><button class="FuncButton" id="Q_7_2_Btn" onclick="CheckMCAnswer(7,2,this)">?</button>&#160;&#160;C. A 50-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 1-<br />hop maximum.</li><li id="Q_7_3"><button class="FuncButton" id="Q_7_3_Btn" onclick="CheckMCAnswer(7,3,this)">?</button>&#160;&#160;D. A 50-percent throughput loss occurs for every hop. Cisco Meraki best practice recommends a 2-<br />hop maximum</li></ol></li>
+<li class="QuizQuestion" id="Q_8" style="display: none;"><div class="QuestionText">What are two roles of the network and device tags in a Dashboard? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_8_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_8_0_Chk" class="MSelCheckbox" />A. Tags enable administrators to configure a combination of network and device specific tags to<br />create summary reports filtered for specific devices across multiple networks.</div></form></li><li id="Q_8_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_8_1_Chk" class="MSelCheckbox" />B. Network tags can be used to assign networks to separate Auto VPN domains in an Organization<br />with many networks.</div></form></li><li id="Q_8_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_8_2_Chk" class="MSelCheckbox" />C. Network tags can be used to simplify the assignment of network-level permissions in an Organization with many networks</div></form></li><li id="Q_8_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_8_3_Chk" class="MSelCheckbox" />D. Device tags can be used to simplify the assignment of device-level permissions in an<br />Organization with many administrators.</div></form></li><li id="Q_8_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_8_4_Chk" class="MSelCheckbox" />E. Device tags can be assigned to MR APs to influence the gateway selection for repeaters in a<br />mesh wireless network</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(8)">Check</button></li>
+<li class="QuizQuestion" id="Q_9" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which outcome occurs when logging is set to Enabled?<img src="../../Meraki/05.PNG" alt="05.PNG" title="05" width="604" height="85"/></div><ol class="MCAnswers"><li id="Q_9_0"><button class="FuncButton" id="Q_9_0_Btn" onclick="CheckMCAnswer(9,0,this)">?</button>&#160;&#160;A. Outbound flows are sent to a configured syslog server if a syslog sender is configured for flows.</li><li id="Q_9_1"><button class="FuncButton" id="Q_9_1_Btn" onclick="CheckMCAnswer(9,1,this)">?</button>&#160;&#160;B. The hits counter within this section is now enabled.</li><li id="Q_9_2"><button class="FuncButton" id="Q_9_2_Btn" onclick="CheckMCAnswer(9,2,this)">?</button>&#160;&#160;C. This firewall rule is now enabled.</li><li id="Q_9_3"><button class="FuncButton" id="Q_9_3_Btn" onclick="CheckMCAnswer(9,3,this)">?</button>&#160;&#160;D. Inbound flows are sent to a configured syslog server if a syslog server configured for flows.</li></ol></li>
+<li class="QuizQuestion" id="Q_10" style="display: none;"><div class="QuestionText">Refer to the exhibit. What is the minimal Cisco Meraki Insight licensing requirement?<img src="../../Meraki/06.PNG" alt="06.PNG" title="06" width="656" height="422"/></div><ol class="MCAnswers"><li id="Q_10_0"><button class="FuncButton" id="Q_10_0_Btn" onclick="CheckMCAnswer(10,0,this)">?</button>&#160;&#160;A. A single Meraki Insight license must be configured on network A to gain Web App Health visibility<br />on network B.</li><li id="Q_10_1"><button class="FuncButton" id="Q_10_1_Btn" onclick="CheckMCAnswer(10,1,this)">?</button>&#160;&#160;B. A single Meraki Insight license must be configured on network B to gain Web App Health visibility<br />on network B.</li><li id="Q_10_2"><button class="FuncButton" id="Q_10_2_Btn" onclick="CheckMCAnswer(10,2,this)">?</button>&#160;&#160;C. A single Meraki Insight license must be configured on network A, and a single license must be<br />configured on network B, to gain Web App Health visibility on network B.</li><li id="Q_10_3"><button class="FuncButton" id="Q_10_3_Btn" onclick="CheckMCAnswer(10,3,this)">?</button>&#160;&#160;D. Two Meraki Insight licenses must be configured on network A to gain Web App Health visibility on<br />network B.</li><li id="Q_10_4"><button class="FuncButton" id="Q_10_4_Btn" onclick="CheckMCAnswer(10,4,this)">?</button>&#160;&#160;E. Two Meraki Insight licenses must be configured on network A and a single license must be<br />configured on network B, to gain Web App Health visibility on network B.</li></ol></li>
+<li class="QuizQuestion" id="Q_11" style="display: none;"><div class="QuestionText">Air Marshal has contained a malicious SSID What are two effects on connectivity? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_11_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_11_0_Chk" class="MSelCheckbox" />A. Currently associated clients stay connected.</div></form></li><li id="Q_11_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_11_1_Chk" class="MSelCheckbox" />B. New clients can connect.</div></form></li><li id="Q_11_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_11_2_Chk" class="MSelCheckbox" />C. Currently associated clients are affected by restrictive traffic shaping rules.</div></form></li><li id="Q_11_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_11_3_Chk" class="MSelCheckbox" />D. New clients cannot connect.</div></form></li><li id="Q_11_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_11_4_Chk" class="MSelCheckbox" />E. Currently associated clients are disconnected.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(11)">Check</button></li>
+<li class="QuizQuestion" id="Q_12" style="display: none;"><div class="QuestionText">What is the best practice Systems Manager enrollment method when deploying corporate-owned iOS devices?</div><ol class="MCAnswers"><li id="Q_12_0"><button class="FuncButton" id="Q_12_0_Btn" onclick="CheckMCAnswer(12,0,this)">?</button>&#160;&#160;A. manual</li><li id="Q_12_1"><button class="FuncButton" id="Q_12_1_Btn" onclick="CheckMCAnswer(12,1,this)">?</button>&#160;&#160;B. Apple Configurator</li><li id="Q_12_2"><button class="FuncButton" id="Q_12_2_Btn" onclick="CheckMCAnswer(12,2,this)">?</button>&#160;&#160;C. Sentry enrollment</li><li id="Q_12_3"><button class="FuncButton" id="Q_12_3_Btn" onclick="CheckMCAnswer(12,3,this)">?</button>&#160;&#160;D. DEP</li></ol></li>
+<li class="QuizQuestion" id="Q_13" style="display: none;"><div class="QuestionText">A customer requires a hub-and-spoke Auto VPN deployment with two NAT-mode hubs with dual uplink connections and 50 remote sites with a single uplink connection.<br />How many tunnels does each hub need to support?</div><ol class="MCAnswers"><li id="Q_13_0"><button class="FuncButton" id="Q_13_0_Btn" onclick="CheckMCAnswer(13,0,this)">?</button>&#160;&#160;A. 52</li><li id="Q_13_1"><button class="FuncButton" id="Q_13_1_Btn" onclick="CheckMCAnswer(13,1,this)">?</button>&#160;&#160;B. 54</li><li id="Q_13_2"><button class="FuncButton" id="Q_13_2_Btn" onclick="CheckMCAnswer(13,2,this)">?</button>&#160;&#160;C. 100</li><li id="Q_13_3"><button class="FuncButton" id="Q_13_3_Btn" onclick="CheckMCAnswer(13,3,this)">?</button>&#160;&#160;D. 104</li></ol></li>
+<li class="QuizQuestion" id="Q_14" style="display: none;"><div class="QuestionText">Which order is accurate for a firmware upgrade on MX appliances in a high-availability configuration?<br /></div><ol class="MCAnswers"><li id="Q_14_0"><button class="FuncButton" id="Q_14_0_Btn" onclick="CheckMCAnswer(14,0,this)">?</button>&#160;&#160;A. starts on the secondary MX appliance and then occurs on the primary MX appliance</li><li id="Q_14_1"><button class="FuncButton" id="Q_14_1_Btn" onclick="CheckMCAnswer(14,1,this)">?</button>&#160;&#160;B. starts on both MX appliances at the same time and then reboots both appliances after traffic on<br />the primary MX appliance ceases</li><li id="Q_14_2"><button class="FuncButton" id="Q_14_2_Btn" onclick="CheckMCAnswer(14,2,this)">?</button>&#160;&#160;C. starts on both MX appliances at the same time and then immediately reboots both appliances</li><li id="Q_14_3"><button class="FuncButton" id="Q_14_3_Btn" onclick="CheckMCAnswer(14,3,this)">?</button>&#160;&#160;D. starts on the primary MX appliance and then occurs on the secondary MX appliance</li></ol></li>
+<li class="QuizQuestion" id="Q_15" style="display: none;"><div class="QuestionText">How is high-availability supported for Cisco Meraki devices</div><ol class="MCAnswers"><li id="Q_15_0"><button class="FuncButton" id="Q_15_0_Btn" onclick="CheckMCAnswer(15,0,this)">?</button>&#160;&#160;A. Only the MX Security Appliances that use VRRP support high availability.</li><li id="Q_15_1"><button class="FuncButton" id="Q_15_1_Btn" onclick="CheckMCAnswer(15,1,this)">?</button>&#160;&#160;B. An active/active high-availability pair is recommended for MX Security Appliances.</li><li id="Q_15_2"><button class="FuncButton" id="Q_15_2_Btn" onclick="CheckMCAnswer(15,2,this)">?</button>&#160;&#160;C. The MX Security Appliances and MS Series Switches that use VRRP support an active/passive<br />high-availability pair.</li><li id="Q_15_3"><button class="FuncButton" id="Q_15_3_Btn" onclick="CheckMCAnswer(15,3,this)">?</button>&#160;&#160;D. The MX Security Appliances and MS Series Switches that use HSRP support an active/passive<br />high-availability pair.</li></ol></li>
+<li class="QuizQuestion" id="Q_16" style="display: none;"><div class="QuestionText">Which three verbs of request are available in the Cisco Meraki API? (Choose three.)</div><ol class="MSelAnswers"><li id="Q_16_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_0_Chk" class="MSelCheckbox" />A. SET</div></form></li><li id="Q_16_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_1_Chk" class="MSelCheckbox" />B. PUT</div></form></li><li id="Q_16_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_2_Chk" class="MSelCheckbox" />C. PATCH</div></form></li><li id="Q_16_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_3_Chk" class="MSelCheckbox" />D. ADD</div></form></li><li id="Q_16_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_4_Chk" class="MSelCheckbox" />E. POST</div></form></li><li id="Q_16_5"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_16_5_Chk" class="MSelCheckbox" />F. GET</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(16)">Check</button></li>
+<li class="QuizQuestion" id="Q_17" style="display: none;"><div class="QuestionText">A customer wants to use Microsoft Azure to host corporate application servers. Which feature does the customer get by using a vMX appliance rather than connecting directly to Azure by VPN?</div><ol class="MCAnswers"><li id="Q_17_0"><button class="FuncButton" id="Q_17_0_Btn" onclick="CheckMCAnswer(17,0,this)">?</button>&#160;&#160;A. malware protection</li><li id="Q_17_1"><button class="FuncButton" id="Q_17_1_Btn" onclick="CheckMCAnswer(17,1,this)">?</button>&#160;&#160;B. SD-WAN</li><li id="Q_17_2"><button class="FuncButton" id="Q_17_2_Btn" onclick="CheckMCAnswer(17,2,this)">?</button>&#160;&#160;C. next-generation firewall</li><li id="Q_17_3"><button class="FuncButton" id="Q_17_3_Btn" onclick="CheckMCAnswer(17,3,this)">?</button>&#160;&#160;D. intrusion prevention</li></ol></li>
+<li class="QuizQuestion" id="Q_18" style="display: none;"><div class="QuestionText">Refer to the exhibit. What is an advantage of implementing inter-VLAN routing on an MX Security Appliance rather than performing inter-VLAN routing on an MS Series Switch?<img src="../../Meraki/08.PNG" alt="08.PNG" title="08" width="677" height="387"/></div><ol class="MCAnswers"><li id="Q_18_0"><button class="FuncButton" id="Q_18_0_Btn" onclick="CheckMCAnswer(18,0,this)">?</button>&#160;&#160;A. The MX appliance performs IDS/IPS for inter-VLAN traffic.</li><li id="Q_18_1"><button class="FuncButton" id="Q_18_1_Btn" onclick="CheckMCAnswer(18,1,this)">?</button>&#160;&#160;B. The MX appliance performs AMP for inter-VLAN traffic.</li><li id="Q_18_2"><button class="FuncButton" id="Q_18_2_Btn" onclick="CheckMCAnswer(18,2,this)">?</button>&#160;&#160;C. The MX appliance performs data encryption for inter-VLAN traffic.</li><li id="Q_18_3"><button class="FuncButton" id="Q_18_3_Btn" onclick="CheckMCAnswer(18,3,this)">?</button>&#160;&#160;D. The MX appliance performs content filtering for inter-VLAN traffic.</li></ol></li>
+<li class="QuizQuestion" id="Q_19" style="display: none;"><div class="QuestionText">Which API endpoint clones a new Organization?</div><ol class="MCAnswers"><li id="Q_19_0"><button class="FuncButton" id="Q_19_0_Btn" onclick="CheckMCAnswer(19,0,this)">?</button>&#160;&#160;A. POST /organizations/clone/{organizationId}</li><li id="Q_19_1"><button class="FuncButton" id="Q_19_1_Btn" onclick="CheckMCAnswer(19,1,this)">?</button>&#160;&#160;B. PUT /organizations/{organizationId}/clone</li><li id="Q_19_2"><button class="FuncButton" id="Q_19_2_Btn" onclick="CheckMCAnswer(19,2,this)">?</button>&#160;&#160;C. POST /organizations/{organizationId}/new</li><li id="Q_19_3"><button class="FuncButton" id="Q_19_3_Btn" onclick="CheckMCAnswer(19,3,this)">?</button>&#160;&#160;D. POST /organizations/{organizationId}/clone</li></ol></li>
+<li class="QuizQuestion" id="Q_20" style="display: none;"><div class="QuestionText">What happens to an unsupervised iOS device when the "Meraki management" profile is removed?</div><ol class="MCAnswers"><li id="Q_20_0"><button class="FuncButton" id="Q_20_0_Btn" onclick="CheckMCAnswer(20,0,this)">?</button>&#160;&#160;A. The "Meraki management" profile is removed. All configuration profiles that Systems Manager<br />pushed remain.</li><li id="Q_20_1"><button class="FuncButton" id="Q_20_1_Btn" onclick="CheckMCAnswer(20,1,this)">?</button>&#160;&#160;B. The "Meraki management" profile is removed. All configuration profiles that Systems Manager<br />pushed are also removed.</li><li id="Q_20_2"><button class="FuncButton" id="Q_20_2_Btn" onclick="CheckMCAnswer(20,2,this)">?</button>&#160;&#160;C. The "Meraki management" profile is removed and then pushed automatically by Systems Manager</li><li id="Q_20_3"><button class="FuncButton" id="Q_20_3_Btn" onclick="CheckMCAnswer(20,3,this)">?</button>&#160;&#160;D. The "Meraki management" profile cannot be removed.</li></ol></li>
+<li class="QuizQuestion" id="Q_21" style="display: none;"><div class="QuestionText">Which requirement is needed to implement Fast Lane on Cisco Meraki APs?<br /></div><ol class="MCAnswers"><li id="Q_21_0"><button class="FuncButton" id="Q_21_0_Btn" onclick="CheckMCAnswer(21,0,this)">?</button>&#160;&#160;A. wireless profile installed on an Apple iOS device</li><li id="Q_21_1"><button class="FuncButton" id="Q_21_1_Btn" onclick="CheckMCAnswer(21,1,this)">?</button>&#160;&#160;B. wireless profile installed on a Cisco iOS access point</li><li id="Q_21_2"><button class="FuncButton" id="Q_21_2_Btn" onclick="CheckMCAnswer(21,2,this)">?</button>&#160;&#160;C. adaptive 802.11r disabled</li><li id="Q_21_3"><button class="FuncButton" id="Q_21_3_Btn" onclick="CheckMCAnswer(21,3,this)">?</button>&#160;&#160;D. traffic shaping rule tagging traffic with a DSCP value of 46 to Apple.com</li></ol></li>
+<li class="QuizQuestion" id="Q_22" style="display: none;"><div class="QuestionText">Which type of authentication protocol is used when using OSPF on an MX appliance?<br /></div><ol class="MCAnswers"><li id="Q_22_0"><button class="FuncButton" id="Q_22_0_Btn" onclick="CheckMCAnswer(22,0,this)">?</button>&#160;&#160;A. MD5</li><li id="Q_22_1"><button class="FuncButton" id="Q_22_1_Btn" onclick="CheckMCAnswer(22,1,this)">?</button>&#160;&#160;B. certificate</li><li id="Q_22_2"><button class="FuncButton" id="Q_22_2_Btn" onclick="CheckMCAnswer(22,2,this)">?</button>&#160;&#160;C. plaintext</li><li id="Q_22_3"><button class="FuncButton" id="Q_22_3_Btn" onclick="CheckMCAnswer(22,3,this)">?</button>&#160;&#160;D. SHA-1</li></ol></li>
+<li class="QuizQuestion" id="Q_23" style="display: none;"><div class="QuestionText">When wireless SSIDs are configured in Dashboard, which setting on the Access Control page affects the ability of a 2.4 GHz only client device from associating to the WLAN for the first time?</div><ol class="MCAnswers"><li id="Q_23_0"><button class="FuncButton" id="Q_23_0_Btn" onclick="CheckMCAnswer(23,0,this)">?</button>&#160;&#160;A. Content filtering</li><li id="Q_23_1"><button class="FuncButton" id="Q_23_1_Btn" onclick="CheckMCAnswer(23,1,this)">?</button>&#160;&#160;B. Bridge mode</li><li id="Q_23_2"><button class="FuncButton" id="Q_23_2_Btn" onclick="CheckMCAnswer(23,2,this)">?</button>&#160;&#160;C. 802.11r</li><li id="Q_23_3"><button class="FuncButton" id="Q_23_3_Btn" onclick="CheckMCAnswer(23,3,this)">?</button>&#160;&#160;D. Dual band operating with Band Steering</li></ol></li>
+<li class="QuizQuestion" id="Q_24" style="display: none;"><div class="QuestionText">Which two actions can extend the video retention of a Cisco Meraki MV Smart Camera? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_24_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_24_0_Chk" class="MSelCheckbox" />A. enabling audio compression</div></form></li><li id="Q_24_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_24_1_Chk" class="MSelCheckbox" />B. installing an SSD memory extension</div></form></li><li id="Q_24_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_24_2_Chk" class="MSelCheckbox" />C. enabling motion-based retention</div></form></li><li id="Q_24_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_24_3_Chk" class="MSelCheckbox" />D. enabling maximum retention limit</div></form></li><li id="Q_24_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_24_4_Chk" class="MSelCheckbox" />E. configuring a recording schedule</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(24)">Check</button></li>
+<li class="QuizQuestion" id="Q_25" style="display: none;"><div class="QuestionText">How does a Meraki device behave if cloud connectivity is temporarily lost?</div><ol class="MCAnswers"><li id="Q_25_0"><button class="FuncButton" id="Q_25_0_Btn" onclick="CheckMCAnswer(25,0,this)">?</button>&#160;&#160;A. The offline device continues to run with its last known configuration until cloud connectivity is<br />restored.<br />ve</li><li id="Q_25_1"><button class="FuncButton" id="Q_25_1_Btn" onclick="CheckMCAnswer(25,1,this)">?</button>&#160;&#160;B. The offline device reboots every 5 minutes until connection is restored.</li><li id="Q_25_2"><button class="FuncButton" id="Q_25_2_Btn" onclick="CheckMCAnswer(25,2,this)">?</button>&#160;&#160;C. The offline device stops passing traffic.</li><li id="Q_25_3"><button class="FuncButton" id="Q_25_3_Btn" onclick="CheckMCAnswer(25,3,this)">?</button>&#160;&#160;D. The offline device tries to form a connection with a local backup server</li></ol></li>
+<li class="QuizQuestion" id="Q_26" style="display: none;"><div class="QuestionText">Where should a network admin navigate to investigate wireless mesh information between Meraki APs?</div><ol class="MCAnswers"><li id="Q_26_0"><button class="FuncButton" id="Q_26_0_Btn" onclick="CheckMCAnswer(26,0,this)">?</button>&#160;&#160;A. Wireless &gt; Monitor &gt; Access Points &gt; AP &gt; RF</li><li id="Q_26_1"><button class="FuncButton" id="Q_26_1_Btn" onclick="CheckMCAnswer(26,1,this)">?</button>&#160;&#160;B. Wireless &gt; Configure &gt; Radio Settings</li><li id="Q_26_2"><button class="FuncButton" id="Q_26_2_Btn" onclick="CheckMCAnswer(26,2,this)">?</button>&#160;&#160;C. Wireless &gt; Monitor &gt; Wireless Health</li><li id="Q_26_3"><button class="FuncButton" id="Q_26_3_Btn" onclick="CheckMCAnswer(26,3,this)">?</button>&#160;&#160;D. Wireless &gt; Monitor &gt; RF Spectrum</li></ol></li>
+<li class="QuizQuestion" id="Q_27" style="display: none;"><div class="QuestionText">What causes this behavior?<img src="../../Meraki/09.PNG" alt="09.PNG" title="09" width="578" height="252"/></div><ol class="MCAnswers"><li id="Q_27_0"><button class="FuncButton" id="Q_27_0_Btn" onclick="CheckMCAnswer(27,0,this)">?</button>&#160;&#160;A. An AP does not have a wired connection to the network.</li><li id="Q_27_1"><button class="FuncButton" id="Q_27_1_Btn" onclick="CheckMCAnswer(27,1,this)">?</button>&#160;&#160;B. An AP cannot connect to the default gateway.</li><li id="Q_27_2"><button class="FuncButton" id="Q_27_2_Btn" onclick="CheckMCAnswer(27,2,this)">?</button>&#160;&#160;C. An AP has never connected to the Meraki Cloud Controller.</li><li id="Q_27_3"><button class="FuncButton" id="Q_27_3_Btn" onclick="CheckMCAnswer(27,3,this)">?</button>&#160;&#160;D. An AP has Site Survey mode enabled.</li></ol></li>
+<li class="QuizQuestion" id="Q_28" style="display: none;"><div class="QuestionText">A Cisco Meraki MV camera is monitoring an office and its field of vision currently captures work desks and employee computer screens. However, recording employee computer screens is prohibited by local regulation. Which feature in Dashboard can be used to preserve the current position of the camera while also meeting regulation requirements?</div><ol class="MCAnswers"><li id="Q_28_0"><button class="FuncButton" id="Q_28_0_Btn" onclick="CheckMCAnswer(28,0,this)">?</button>&#160;&#160;A. zone exclusion</li><li id="Q_28_1"><button class="FuncButton" id="Q_28_1_Btn" onclick="CheckMCAnswer(28,1,this)">?</button>&#160;&#160;B. privacy window</li><li id="Q_28_2"><button class="FuncButton" id="Q_28_2_Btn" onclick="CheckMCAnswer(28,2,this)">?</button>&#160;&#160;C. area or interest</li><li id="Q_28_3"><button class="FuncButton" id="Q_28_3_Btn" onclick="CheckMCAnswer(28,3,this)">?</button>&#160;&#160;D. sensor crop</li><li id="Q_28_4"><button class="FuncButton" id="Q_28_4_Btn" onclick="CheckMCAnswer(28,4,this)">?</button>&#160;&#160;E. restricted mode</li></ol></li>
+<li class="QuizQuestion" id="Q_29" style="display: none;"><div class="QuestionText">Which Cisco Meraki product must be deployed in addition to Systems Manager so that Systems Manager Sentry enrollment can be used?<br /></div><ol class="MCAnswers"><li id="Q_29_0"><button class="FuncButton" id="Q_29_0_Btn" onclick="CheckMCAnswer(29,0,this)">?</button>&#160;&#160;A. MS Switch</li><li id="Q_29_1"><button class="FuncButton" id="Q_29_1_Btn" onclick="CheckMCAnswer(29,1,this)">?</button>&#160;&#160;B. Meraki Insight</li><li id="Q_29_2"><button class="FuncButton" id="Q_29_2_Btn" onclick="CheckMCAnswer(29,2,this)">?</button>&#160;&#160;C. MR Access Point</li><li id="Q_29_3"><button class="FuncButton" id="Q_29_3_Btn" onclick="CheckMCAnswer(29,3,this)">?</button>&#160;&#160;D. MV Smart Camera</li></ol></li>
+<li class="QuizQuestion" id="Q_30" style="display: none;"><div class="QuestionText">Which information do the MXs in a High Availability pair share?</div><ol class="MCAnswers"><li id="Q_30_0"><button class="FuncButton" id="Q_30_0_Btn" onclick="CheckMCAnswer(30,0,this)">?</button>&#160;&#160;A. spanning-tree state</li><li id="Q_30_1"><button class="FuncButton" id="Q_30_1_Btn" onclick="CheckMCAnswer(30,1,this)">?</button>&#160;&#160;B. time synchronization state</li><li id="Q_30_2"><button class="FuncButton" id="Q_30_2_Btn" onclick="CheckMCAnswer(30,2,this)">?</button>&#160;&#160;C. DHCP association database</li><li id="Q_30_3"><button class="FuncButton" id="Q_30_3_Btn" onclick="CheckMCAnswer(30,3,this)">?</button>&#160;&#160;D. stateful firewall database</li></ol></li>
+<li class="QuizQuestion" id="Q_31" style="display: none;"><div class="QuestionText">Which VLAN is used to source pings across the site-to-site VPN when using the MX Live tools?</div><ol class="MCAnswers"><li id="Q_31_0"><button class="FuncButton" id="Q_31_0_Btn" onclick="CheckMCAnswer(31,0,this)">?</button>&#160;&#160;A. highest VLAN ID that is configured and set to NO to use VPN</li><li id="Q_31_1"><button class="FuncButton" id="Q_31_1_Btn" onclick="CheckMCAnswer(31,1,this)">?</button>&#160;&#160;B. lowest VLAN ID that is configured and set to YES to use VPN</li><li id="Q_31_2"><button class="FuncButton" id="Q_31_2_Btn" onclick="CheckMCAnswer(31,2,this)">?</button>&#160;&#160;C. highest VLAN ID that is configured and set to YES to use VPN</li><li id="Q_31_3"><button class="FuncButton" id="Q_31_3_Btn" onclick="CheckMCAnswer(31,3,this)">?</button>&#160;&#160;D. lowest VLAN ID configured and set to NO to use VPN</li></ol></li>
+<li class="QuizQuestion" id="Q_32" style="display: none;"><div class="QuestionText">A new application needs to be pushed to all iOS devices. Some devices report "NotNow" in the event log and do not install the application.<br />What does the "NotNow" event indicate?</div><ol class="MCAnswers"><li id="Q_32_0"><button class="FuncButton" id="Q_32_0_Btn" onclick="CheckMCAnswer(32,0,this)">?</button>&#160;&#160;A. The application requires the most recent iOS version.</li><li id="Q_32_1"><button class="FuncButton" id="Q_32_1_Btn" onclick="CheckMCAnswer(32,1,this)">?</button>&#160;&#160;B. The device is locked with a passcode.</li><li id="Q_32_2"><button class="FuncButton" id="Q_32_2_Btn" onclick="CheckMCAnswer(32,2,this)">?</button>&#160;&#160;C. The device cannot connect to Apple servers.</li><li id="Q_32_3"><button class="FuncButton" id="Q_32_3_Btn" onclick="CheckMCAnswer(32,3,this)">?</button>&#160;&#160;D. The device cannot connect to Cisco Meraki servers.</li></ol></li>
+<li class="QuizQuestion" id="Q_33" style="display: none;"><div class="QuestionText">Which information is used to calculate whether a WAN link has high usage?</div><ol class="MCAnswers"><li id="Q_33_0"><button class="FuncButton" id="Q_33_0_Btn" onclick="CheckMCAnswer(33,0,this)">?</button>&#160;&#160;A. data under Security & SD WAN &gt; Appliance Status &gt; Uplink &gt; Live Data</li><li id="Q_33_1"><button class="FuncButton" id="Q_33_1_Btn" onclick="CheckMCAnswer(33,1,this)">?</button>&#160;&#160;B. total historical throughput of an uplink</li><li id="Q_33_2"><button class="FuncButton" id="Q_33_2_Btn" onclick="CheckMCAnswer(33,2,this)">?</button>&#160;&#160;C. total number of devices that are actively passing traffic</li><li id="Q_33_3"><button class="FuncButton" id="Q_33_3_Btn" onclick="CheckMCAnswer(33,3,this)">?</button>&#160;&#160;D. value under Security & SD WAN &gt; SD WAN & Traffic Shaping &gt; Uplink Configuration</li></ol></li>
+<li class="QuizQuestion" id="Q_34" style="display: none;"><div class="QuestionText">Which configuration step is necessary when automatic updating is required of iOS apps provisioned through Systems Manager that are found in the App Store?</div><ol class="MCAnswers"><li id="Q_34_0"><button class="FuncButton" id="Q_34_0_Btn" onclick="CheckMCAnswer(34,0,this)">?</button>&#160;&#160;A. No configuration step is necessary; automatic updating is the default behavior</li><li id="Q_34_1"><button class="FuncButton" id="Q_34_1_Btn" onclick="CheckMCAnswer(34,1,this)">?</button>&#160;&#160;B. Configure automatic updating of iOS devices in the Meraki installed profile.</li><li id="Q_34_2"><button class="FuncButton" id="Q_34_2_Btn" onclick="CheckMCAnswer(34,2,this)">?</button>&#160;&#160;C. Create a security policy that enables automatic updates.</li><li id="Q_34_3"><button class="FuncButton" id="Q_34_3_Btn" onclick="CheckMCAnswer(34,3,this)">?</button>&#160;&#160;D. Create a profile with automatic update enabled and apply it to iOS devices</li></ol></li>
+<li class="QuizQuestion" id="Q_35" style="display: none;"><div class="QuestionText">Of which two solutions is a Cisco Meraki device a component? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_35_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_35_0_Chk" class="MSelCheckbox" />A. cloud-managed</div></form></li><li id="Q_35_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_35_1_Chk" class="MSelCheckbox" />B. on premises</div></form></li><li id="Q_35_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_35_2_Chk" class="MSelCheckbox" />C. hybrid</div></form></li><li id="Q_35_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_35_3_Chk" class="MSelCheckbox" />D. Cisco Catalyst</div></form></li><li id="Q_35_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_35_4_Chk" class="MSelCheckbox" />E. Cisco Prime Infrastructure</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(35)">Check</button></li>
+<li class="QuizQuestion" id="Q_36" style="display: none;"><div class="QuestionText">When an SSID is configured with Sign-On Splash page enabled, which two settings must be<br />configured for unauthenticated clients to have full network access and not be allow listed? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_36_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_36_0_Chk" class="MSelCheckbox" />A. Controller disconnection behavior</div></form></li><li id="Q_36_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_36_1_Chk" class="MSelCheckbox" />B. Captive Portal strength</div></form></li><li id="Q_36_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_36_2_Chk" class="MSelCheckbox" />C. Simultaneous logins</div></form></li><li id="Q_36_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_36_3_Chk" class="MSelCheckbox" />D. Firewall & traffic shaping</div></form></li><li id="Q_36_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_36_4_Chk" class="MSelCheckbox" />E. RADIUS for splash page settings</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(36)">Check</button></li>
+<li class="QuizQuestion" id="Q_37" style="display: none;"><div class="QuestionText">Refer to the exhibit. Assuming this MX has established a full tunnel with its VPN peer, how will the MX route the WebEx traffic?<img src="../../Meraki/10.PNG" alt="10.PNG" title="10" width="664" height="464"/></div><ol class="MCAnswers"><li id="Q_37_0"><button class="FuncButton" id="Q_37_0_Btn" onclick="CheckMCAnswer(37,0,this)">?</button>&#160;&#160;A. WebEx traffic will prefer WAN 2 as long as it meets the thresholds in the "Conf" performance<br />class.</li><li id="Q_37_1"><button class="FuncButton" id="Q_37_1_Btn" onclick="CheckMCAnswer(37,1,this)">?</button>&#160;&#160;B. WebEx traffic will prefer WAN 1 as it is the primary uplink.</li><li id="Q_37_2"><button class="FuncButton" id="Q_37_2_Btn" onclick="CheckMCAnswer(37,2,this)">?</button>&#160;&#160;C. WebEx traffic will prefer WAN 2 as long as it is up.</li><li id="Q_37_3"><button class="FuncButton" id="Q_37_3_Btn" onclick="CheckMCAnswer(37,3,this)">?</button>&#160;&#160;D. WebEx traffic will be load-balanced between both active WAN links</li></ol></li>
+<li class="QuizQuestion" id="Q_38" style="display: none;"><div class="QuestionText">For which two reasons can an organization become "Out of License"? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_38_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_38_0_Chk" class="MSelCheckbox" />A. licenses that are in the wrong network</div></form></li><li id="Q_38_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_38_1_Chk" class="MSelCheckbox" />B. more hardware devices than device licenses</div></form></li><li id="Q_38_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_38_2_Chk" class="MSelCheckbox" />C. expired device license</div></form></li><li id="Q_38_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_38_3_Chk" class="MSelCheckbox" />D. licenses that do not match the serial numbers in the organization</div></form></li><li id="Q_38_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_38_4_Chk" class="MSelCheckbox" />E. MR licenses that do not match the MR models in the organization</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(38)">Check</button></li>
+<li class="QuizQuestion" id="Q_39" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which two actions are required to optimize load balancing asymmetrically with a 4:1 ratio between links? (Choose two.)<img src="../../Meraki/11.PNG" alt="11.PNG" title="11" width="709" height="496"/></div><ol class="MSelAnswers"><li id="Q_39_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_39_0_Chk" class="MSelCheckbox" />A. Change the primary uplink to "none".</div></form></li><li id="Q_39_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_39_1_Chk" class="MSelCheckbox" />B. Add an internet traffic preference that defines the load-balancing ratio as 4:1.</div></form></li><li id="Q_39_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_39_2_Chk" class="MSelCheckbox" />C. Enable load balancing.</div></form></li><li id="Q_39_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_39_3_Chk" class="MSelCheckbox" />D. Set the speed of the cellular uplink to zero.</div></form></li><li id="Q_39_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_39_4_Chk" class="MSelCheckbox" />E. Change the assigned speeds of WAN 1 and WAN 2 so that the ratio is 4:1.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(39)">Check</button></li>
+<li class="QuizQuestion" id="Q_40" style="display: none;"><div class="QuestionText">How is an organization defined within the context of the Cisco Meraki dashboard?<br /></div><ol class="MCAnswers"><li id="Q_40_0"><button class="FuncButton" id="Q_40_0_Btn" onclick="CheckMCAnswer(40,0,this)">?</button>&#160;&#160;A. It serves as the boundary of the administrative domain of the account including license, inventory,<br />and user management.</li><li id="Q_40_1"><button class="FuncButton" id="Q_40_1_Btn" onclick="CheckMCAnswer(40,1,this)">?</button>&#160;&#160;B. It is defined by the network construct of the user and categorized as either SME (small medium<br />enterprise), campus, or a distributed enterprise</li><li id="Q_40_2"><button class="FuncButton" id="Q_40_2_Btn" onclick="CheckMCAnswer(40,2,this)">?</button>&#160;&#160;C. It contains Cisco Meraki devices, their configurations, statistics, and any client device information.</li><li id="Q_40_3"><button class="FuncButton" id="Q_40_3_Btn" onclick="CheckMCAnswer(40,3,this)">?</button>&#160;&#160;D. It consists of multiple service provider resources including support ticket management and API<br />sandboxes</li></ol></li>
+<li class="QuizQuestion" id="Q_41" style="display: none;"><div class="QuestionText">What are two ways peers interact with ports that Auto VPN uses? (Choose two.)<img src="../../Meraki/12.PNG" alt="12.PNG" title="12" width="573" height="315"/></div><ol class="MSelAnswers"><li id="Q_41_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_41_0_Chk" class="MSelCheckbox" />A. For IPsec tunneling, peers use high UDP ports within the 32768 to 61000 range.</div></form></li><li id="Q_41_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_41_1_Chk" class="MSelCheckbox" />B. Peers contact the VPN registry at UDP port 9350.</div></form></li><li id="Q_41_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_41_2_Chk" class="MSelCheckbox" />C. For IPsec tunneling, peers use high TCP ports within the 32768 to 61000 range.</div></form></li><li id="Q_41_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_41_3_Chk" class="MSelCheckbox" />D. Peers contact the VPN registry at TCP port 9350.</div></form></li><li id="Q_41_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_41_4_Chk" class="MSelCheckbox" />E. For IPsec tunneling, peers use UDP ports 500 and 4500.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(41)">Check</button></li>
+<li class="QuizQuestion" id="Q_42" style="display: none;"><div class="QuestionText">What occurs when a configuration change is made to an MX network that is bound to a configuration template?</div><ol class="MCAnswers"><li id="Q_42_0"><button class="FuncButton" id="Q_42_0_Btn" onclick="CheckMCAnswer(42,0,this)">?</button>&#160;&#160;A. The configuration change in the bound network is combined with the template configuration inside<br />the template.</li><li id="Q_42_1"><button class="FuncButton" id="Q_42_1_Btn" onclick="CheckMCAnswer(42,1,this)">?</button>&#160;&#160;B. The more restrictive configuration is preferred.</li><li id="Q_42_2"><button class="FuncButton" id="Q_42_2_Btn" onclick="CheckMCAnswer(42,2,this)">?</button>&#160;&#160;C. The configuration change in the bound network overrides the template configuration.</li><li id="Q_42_3"><button class="FuncButton" id="Q_42_3_Btn" onclick="CheckMCAnswer(42,3,this)">?</button>&#160;&#160;D. The template configuration overrides the configuration change in the bound network.</li></ol></li>
+<li class="QuizQuestion" id="Q_43" style="display: none;"><div class="QuestionText">One thousand concurrent users stream video to their laptops. A 30/70 split between 2.4 GHz and<br />5 GHz is used. Based on client count, how many APs (rounded to the nearest whole number) are needed?</div><ol class="MCAnswers"><li id="Q_43_0"><button class="FuncButton" id="Q_43_0_Btn" onclick="CheckMCAnswer(43,0,this)">?</button>&#160;&#160;A. 26</li><li id="Q_43_1"><button class="FuncButton" id="Q_43_1_Btn" onclick="CheckMCAnswer(43,1,this)">?</button>&#160;&#160;B. 28</li><li id="Q_43_2"><button class="FuncButton" id="Q_43_2_Btn" onclick="CheckMCAnswer(43,2,this)">?</button>&#160;&#160;C. 30</li><li id="Q_43_3"><button class="FuncButton" id="Q_43_3_Btn" onclick="CheckMCAnswer(43,3,this)">?</button>&#160;&#160;D. 32</li></ol></li>
+<li class="QuizQuestion" id="Q_44" style="display: none;"><div class="QuestionText">Refer to the exhibit. For an AP that displays this alert, which network access control method must be in use?<img src="../../Meraki/13.PNG" alt="13.PNG" title="13" width="331" height="84"/></div><ol class="MCAnswers"><li id="Q_44_0"><button class="FuncButton" id="Q_44_0_Btn" onclick="CheckMCAnswer(44,0,this)">?</button>&#160;&#160;A. preshared key</li><li id="Q_44_1"><button class="FuncButton" id="Q_44_1_Btn" onclick="CheckMCAnswer(44,1,this)">?</button>&#160;&#160;B. WPA2-enterprise with my RADIUS server</li><li id="Q_44_2"><button class="FuncButton" id="Q_44_2_Btn" onclick="CheckMCAnswer(44,2,this)">?</button>&#160;&#160;C. splash page with my RADIUS server</li><li id="Q_44_3"><button class="FuncButton" id="Q_44_3_Btn" onclick="CheckMCAnswer(44,3,this)">?</button>&#160;&#160;D. MAC-based access control with RADIUS server</li></ol></li>
+<li class="QuizQuestion" id="Q_45" style="display: none;"><div class="QuestionText">Which Meraki Dashboard menu section is accessed to enable Sentry enrollment on an SSID?</div><ol class="MCAnswers"><li id="Q_45_0"><button class="FuncButton" id="Q_45_0_Btn" onclick="CheckMCAnswer(45,0,this)">?</button>&#160;&#160;A. Wireless &gt; Configure &gt; Access Control</li><li id="Q_45_1"><button class="FuncButton" id="Q_45_1_Btn" onclick="CheckMCAnswer(45,1,this)">?</button>&#160;&#160;B. Wireless &gt; Configure &gt; Splash page</li><li id="Q_45_2"><button class="FuncButton" id="Q_45_2_Btn" onclick="CheckMCAnswer(45,2,this)">?</button>&#160;&#160;C. Wireless &gt; Configure &gt; Firewall & Traffic Shaping</li><li id="Q_45_3"><button class="FuncButton" id="Q_45_3_Btn" onclick="CheckMCAnswer(45,3,this)">?</button>&#160;&#160;D. Wireless &gt; Configure &gt; SSIDs</li></ol></li>
+<li class="QuizQuestion" id="Q_46" style="display: none;"><div class="QuestionText">Company iPads are enrolled in Systems Manager without supervision, and profiles are pushed through Systems Manager. Which outcome occurs when a user attempts to remove the "Meraki Management" profile on an iPad?</div><ol class="MCAnswers"><li id="Q_46_0"><button class="FuncButton" id="Q_46_0_Btn" onclick="CheckMCAnswer(46,0,this)">?</button>&#160;&#160;A. The "Meraki Management" profile cannot be removed.</li><li id="Q_46_1"><button class="FuncButton" id="Q_46_1_Btn" onclick="CheckMCAnswer(46,1,this)">?</button>&#160;&#160;B. The "Meraki Management" profile is removed and then pushed automatically by Systems<br />Manager.</li><li id="Q_46_2"><button class="FuncButton" id="Q_46_2_Btn" onclick="CheckMCAnswer(46,2,this)">?</button>&#160;&#160;C. The "Meraki Management" profile is removed. All the profiles that Systems Manager pushed are<br />also removed.</li><li id="Q_46_3"><button class="FuncButton" id="Q_46_3_Btn" onclick="CheckMCAnswer(46,3,this)">?</button>&#160;&#160;D. The "Meraki Management" profile is removed. All the profiles Systems Manager pushed remain.</li></ol></li>
+<li class="QuizQuestion" id="Q_47" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which IDS/IPS mode is the MX Security Appliance configured for?<img src="../../Meraki/14.PNG" alt="14.PNG" title="14" width="736" height="254"/></div><ol class="MCAnswers"><li id="Q_47_0"><button class="FuncButton" id="Q_47_0_Btn" onclick="CheckMCAnswer(47,0,this)">?</button>&#160;&#160;A. quarantine</li><li id="Q_47_1"><button class="FuncButton" id="Q_47_1_Btn" onclick="CheckMCAnswer(47,1,this)">?</button>&#160;&#160;B. prevention</li><li id="Q_47_2"><button class="FuncButton" id="Q_47_2_Btn" onclick="CheckMCAnswer(47,2,this)">?</button>&#160;&#160;C. detection</li><li id="Q_47_3"><button class="FuncButton" id="Q_47_3_Btn" onclick="CheckMCAnswer(47,3,this)">?</button>&#160;&#160;D. blocking</li></ol></li>
+<li class="QuizQuestion" id="Q_48" style="display: none;"><div class="QuestionText">Which two primary metrics does Meraki Insight use to calculate the Application Performance Score? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_48_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_48_0_Chk" class="MSelCheckbox" />A. Maximum Jitter</div></form></li><li id="Q_48_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_48_1_Chk" class="MSelCheckbox" />B. Total Bandwidth Usage</div></form></li><li id="Q_48_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_48_2_Chk" class="MSelCheckbox" />C. Maximum Latency</div></form></li><li id="Q_48_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_48_3_Chk" class="MSelCheckbox" />D. Per-flow Goodput</div></form></li><li id="Q_48_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_48_4_Chk" class="MSelCheckbox" />E. Application Response Time</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(48)">Check</button></li>
+<li class="QuizQuestion" id="Q_49" style="display: none;"><div class="QuestionText">What is a feature of distributed Layer 3 roaming?</div><ol class="MCAnswers"><li id="Q_49_0"><button class="FuncButton" id="Q_49_0_Btn" onclick="CheckMCAnswer(49,0,this)">?</button>&#160;&#160;A. An MX Security Appliance is not required as a concentrator.</li><li id="Q_49_1"><button class="FuncButton" id="Q_49_1_Btn" onclick="CheckMCAnswer(49,1,this)">?</button>&#160;&#160;B. An MX Security Appliance is required as a concentrator.</li><li id="Q_49_2"><button class="FuncButton" id="Q_49_2_Btn" onclick="CheckMCAnswer(49,2,this)">?</button>&#160;&#160;C. All wireless client traffic can be split-tunneled.</li><li id="Q_49_3"><button class="FuncButton" id="Q_49_3_Btn" onclick="CheckMCAnswer(49,3,this)">?</button>&#160;&#160;D. All wireless client traffic is tunneled.</li></ol></li>
+<li class="QuizQuestion" id="Q_50" style="display: none;"><div class="QuestionText">Which statement about the Cisco Meraki cloud architecture is true?</div><ol class="MCAnswers"><li id="Q_50_0"><button class="FuncButton" id="Q_50_0_Btn" onclick="CheckMCAnswer(50,0,this)">?</button>&#160;&#160;A. Devices are configured in the cloud on first use and then managed locally after they are set up</li><li id="Q_50_1"><button class="FuncButton" id="Q_50_1_Btn" onclick="CheckMCAnswer(50,1,this)">?</button>&#160;&#160;B. All Meraki devices are managed locally by default</li><li id="Q_50_2"><button class="FuncButton" id="Q_50_2_Btn" onclick="CheckMCAnswer(50,2,this)">?</button>&#160;&#160;C. Management data flows to the Cisco Meraki cloud and user traffic flows directly to its destination<br />on the LAN or across the WAN.</li><li id="Q_50_3"><button class="FuncButton" id="Q_50_3_Btn" onclick="CheckMCAnswer(50,3,this)">?</button>&#160;&#160;D. All data flows through the Cisco Meraki cloud.</li></ol></li>
+<li class="QuizQuestion" id="Q_51" style="display: none;"><div class="QuestionText">Refer to the exhibit. What are the Loss and Average Latency statistics based on?<br /><img src="../../Meraki/15.PNG" alt="15.PNG" title="15" width="746" height="171"/></div><ol class="MCAnswers"><li id="Q_51_0"><button class="FuncButton" id="Q_51_0_Btn" onclick="CheckMCAnswer(51,0,this)">?</button>&#160;&#160;A. responses that the MX appliance receives on the connectivity-testing hostnames on the Insight &gt;<br />Web App Health page</li><li id="Q_51_1"><button class="FuncButton" id="Q_51_1_Btn" onclick="CheckMCAnswer(51,1,this)">?</button>&#160;&#160;B. responses that the MX appliance receives on the connectivity-testing IP addresses on the<br />Security & SD-WAN &gt; Firewall page</li><li id="Q_51_2"><button class="FuncButton" id="Q_51_2_Btn" onclick="CheckMCAnswer(51,2,this)">?</button>&#160;&#160;C. responses that the MX appliance receives on the connectivity-testing IP address that is<br />configured on the Security & SD-WAN &gt; SD-WAN & Traffic Shaping page</li><li id="Q_51_3"><button class="FuncButton" id="Q_51_3_Btn" onclick="CheckMCAnswer(51,3,this)">?</button>&#160;&#160;D. responses that the MX appliance receives on the connectivity-testing IP addresses on the Help &gt;<br />Firewall info page</li></ol></li>
+<li class="QuizQuestion" id="Q_52" style="display: none;"><div class="QuestionText">Which Cisco Meraki best practice method preserves complete historical network event logs?</div><ol class="MCAnswers"><li id="Q_52_0"><button class="FuncButton" id="Q_52_0_Btn" onclick="CheckMCAnswer(52,0,this)">?</button>&#160;&#160;A. Configuring the preserved event number to maximize logging.</li><li id="Q_52_1"><button class="FuncButton" id="Q_52_1_Btn" onclick="CheckMCAnswer(52,1,this)">?</button>&#160;&#160;B. Configuring the preserved event period to unlimited.</li><li id="Q_52_2"><button class="FuncButton" id="Q_52_2_Btn" onclick="CheckMCAnswer(52,2,this)">?</button>&#160;&#160;C. Configuring a syslog server for the network.</li><li id="Q_52_3"><button class="FuncButton" id="Q_52_3_Btn" onclick="CheckMCAnswer(52,3,this)">?</button>&#160;&#160;D. Configuring Dashboard logging to preserve only certain event types.</li></ol></li>
+<li class="QuizQuestion" id="Q_53" style="display: none;"><div class="QuestionText">Which design requirement is met by implementing syslog versus SNMP?</div><ol class="MCAnswers"><li id="Q_53_0"><button class="FuncButton" id="Q_53_0_Btn" onclick="CheckMCAnswer(53,0,this)">?</button>&#160;&#160;A. when automation capabilities are needed</li><li id="Q_53_1"><button class="FuncButton" id="Q_53_1_Btn" onclick="CheckMCAnswer(53,1,this)">?</button>&#160;&#160;B. when proactive alerts for critical events must be generated</li><li id="Q_53_2"><button class="FuncButton" id="Q_53_2_Btn" onclick="CheckMCAnswer(53,2,this)">?</button>&#160;&#160;C. when organization-wide information must be collected</li><li id="Q_53_3"><button class="FuncButton" id="Q_53_3_Btn" onclick="CheckMCAnswer(53,3,this)">?</button>&#160;&#160;D. when information such as flows and client connectivity must be gathered</li></ol></li>
+<li class="QuizQuestion" id="Q_54" style="display: none;"><div class="QuestionText">Refer to the exhibit. The VPN concentrator is experiencing issues.<br /><img src="../../Meraki/16.PNG" alt="16.PNG" title="16" width="745" height="390"/><br />Which action should be taken to ensure a stable environment?</div><ol class="MCAnswers"><li id="Q_54_0"><button class="FuncButton" id="Q_54_0_Btn" onclick="CheckMCAnswer(54,0,this)">?</button>&#160;&#160;A. Add a deny any/any firewall rule to the end of the firewall rules.</li><li id="Q_54_1"><button class="FuncButton" id="Q_54_1_Btn" onclick="CheckMCAnswer(54,1,this)">?</button>&#160;&#160;B. Remove the connection from Internet 1.</li><li id="Q_54_2"><button class="FuncButton" id="Q_54_2_Btn" onclick="CheckMCAnswer(54,2,this)">?</button>&#160;&#160;C. Physically disconnect all LAN ports.</li><li id="Q_54_3"><button class="FuncButton" id="Q_54_3_Btn" onclick="CheckMCAnswer(54,3,this)">?</button>&#160;&#160;D. Configure the MX appliance to Routed mode on the Addressing & VLANS page</li></ol></li>
+<li class="QuizQuestion" id="Q_55" style="display: none;"><div class="QuestionText">Refer to the exhibit. A packet arrives on the VPN concentrator with source IP 10.168.70.3 and destined for IP 10.116.32.4. What is the next hop for the packet, based on this concentrator routing table?<br /><img src="../../Meraki/17.PNG" alt="17.PNG" title="17" width="763" height="278"/></div><ol class="MCAnswers"><li id="Q_55_0"><button class="FuncButton" id="Q_55_0_Btn" onclick="CheckMCAnswer(55,0,this)">?</button>&#160;&#160;A. The concentrator gateway (10.128.124.62) is the next hop.</li><li id="Q_55_1"><button class="FuncButton" id="Q_55_1_Btn" onclick="CheckMCAnswer(55,1,this)">?</button>&#160;&#160;B. Not enough detail is available to determine the next hop.</li><li id="Q_55_2"><button class="FuncButton" id="Q_55_2_Btn" onclick="CheckMCAnswer(55,2,this)">?</button>&#160;&#160;C. The packet is stopped.</li><li id="Q_55_3"><button class="FuncButton" id="Q_55_3_Btn" onclick="CheckMCAnswer(55,3,this)">?</button>&#160;&#160;D. The Auto VPN peer "Store 1532 ?appliance" is the next hop</li></ol></li>
+<li class="QuizQuestion" id="Q_56" style="display: none;"><div class="QuestionText">Which two features and functions are supported when using an MX appliance in Passthrough mode? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_56_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_56_0_Chk" class="MSelCheckbox" />A. intrusion prevention</div></form></li><li id="Q_56_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_56_1_Chk" class="MSelCheckbox" />B. site-to-site VPN</div></form></li><li id="Q_56_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_56_2_Chk" class="MSelCheckbox" />C. secondary uplinks</div></form></li><li id="Q_56_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_56_3_Chk" class="MSelCheckbox" />D. DHCP</div></form></li><li id="Q_56_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_56_4_Chk" class="MSelCheckbox" />E. high availability</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(56)">Check</button></li>
+<li class="QuizQuestion" id="Q_57" style="display: none;"><div class="QuestionText">What are two methods of targeting and applying management profiles to System Manager clients? (Choose two.)</div><ol class="MSelAnswers"><li id="Q_57_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_57_0_Chk" class="MSelCheckbox" />A. by defining a range of serial numbers</div></form></li><li id="Q_57_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_57_1_Chk" class="MSelCheckbox" />B. by defining the scope</div></form></li><li id="Q_57_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_57_2_Chk" class="MSelCheckbox" />C. by using device tags</div></form></li><li id="Q_57_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_57_3_Chk" class="MSelCheckbox" />D. by using Wi-Fi tags</div></form></li><li id="Q_57_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_57_4_Chk" class="MSelCheckbox" />E. by using dynamic IP tags</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(57)">Check</button></li>
+<li class="QuizQuestion" id="Q_58" style="display: none;"><div class="QuestionText">Refer to the exhibit. What is the ratio of internet-bound flows that route via WAN 1 compared with WAN 2? <img src="../../Meraki/18.PNG" alt="18.PNG" title="18" width="573" height="465"/></div><ol class="MCAnswers"><li id="Q_58_0"><button class="FuncButton" id="Q_58_0_Btn" onclick="CheckMCAnswer(58,0,this)">?</button>&#160;&#160;A. All flows egress via WAN 1.</li><li id="Q_58_1"><button class="FuncButton" id="Q_58_1_Btn" onclick="CheckMCAnswer(58,1,this)">?</button>&#160;&#160;B. All flows alternate in a 1:1 ratio.</li><li id="Q_58_2"><button class="FuncButton" id="Q_58_2_Btn" onclick="CheckMCAnswer(58,2,this)">?</button>&#160;&#160;C. All flows alternate in a 5:1 ratio.</li><li id="Q_58_3"><button class="FuncButton" id="Q_58_3_Btn" onclick="CheckMCAnswer(58,3,this)">?</button>&#160;&#160;D. All flows alternate in a 2:1 ratio</li></ol></li>
+<li class="QuizQuestion" id="Q_59" style="display: none;"><div class="QuestionText">A Cisco Meraki MX security appliance is trying to route a packet to the destination<br />IP address of 172.18.24.12. Which routes contained in its routing table does it<br />select?</div><ol class="MCAnswers"><li id="Q_59_0"><button class="FuncButton" id="Q_59_0_Btn" onclick="CheckMCAnswer(59,0,this)">?</button>&#160;&#160;A. Auto VPN route 172.18.0.0/16</li><li id="Q_59_1"><button class="FuncButton" id="Q_59_1_Btn" onclick="CheckMCAnswer(59,1,this)">?</button>&#160;&#160;B. non-Meraki VPN route 172.18.24.0/24</li><li id="Q_59_2"><button class="FuncButton" id="Q_59_2_Btn" onclick="CheckMCAnswer(59,2,this)">?</button>&#160;&#160;C. directly connected 172.18.16.0/20</li><li id="Q_59_3"><button class="FuncButton" id="Q_59_3_Btn" onclick="CheckMCAnswer(59,3,this)">?</button>&#160;&#160;D. static route 172.16.0.0/12</li></ol></li>
+<li class="QuizQuestion" id="Q_60" style="display: none;"><div class="QuestionText">Refer to the exhibit. Why does the end user complain of poor wireless performance?<img src="../../Meraki/19.PNG" alt="19.PNG" title="19" width="457" height="435"/></div><ol class="MCAnswers"><li id="Q_60_0"><button class="FuncButton" id="Q_60_0_Btn" onclick="CheckMCAnswer(60,0,this)">?</button>&#160;&#160;A. Channel 48 utilization is at 84 percent.</li><li id="Q_60_1"><button class="FuncButton" id="Q_60_1_Btn" onclick="CheckMCAnswer(60,1,this)">?</button>&#160;&#160;B. The client is using 20 MHz channel width to connect.</li><li id="Q_60_2"><button class="FuncButton" id="Q_60_2_Btn" onclick="CheckMCAnswer(60,2,this)">?</button>&#160;&#160;C. Non-802.11 traffic of 18 percent indicates poor AP placement.</li><li id="Q_60_3"><button class="FuncButton" id="Q_60_3_Btn" onclick="CheckMCAnswer(60,3,this)">?</button>&#160;&#160;D. The client is connected to the secondary radio of the AP instead of the primary<br />radio.</li></ol></li>
+<li class="QuizQuestion" id="Q_61" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which two configurations are needed to successfully monitor custom applications that a user is accessing using Cisco Meraki Insight? (Choosetwo.)<img src="../../Meraki/20.PNG" alt="20.PNG" title="20" width="403" height="407"/></div><ol class="MSelAnswers"><li id="Q_61_0"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_61_0_Chk" class="MSelCheckbox" />A. The custom application uses TLS on any ports.</div></form></li><li id="Q_61_1"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_61_1_Chk" class="MSelCheckbox" />B. The custom application uses HTTP on port 8080.</div></form></li><li id="Q_61_2"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_61_2_Chk" class="MSelCheckbox" />C. The custom application uses HTTPS on TCP 443.</div></form></li><li id="Q_61_3"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_61_3_Chk" class="MSelCheckbox" />D. The custom application uses SMB/CIFS.</div></form></li><li id="Q_61_4"><form method="post" onsubmit="return false;"><div><input type="checkbox" id="Q_61_4_Chk" class="MSelCheckbox" />E. The custom application uses HTTPS on port 8080.</div></form></li></ol><button class="FuncButton" onclick="CheckMultiSelAnswer(61)">Check</button></li>
+<li class="QuizQuestion" id="Q_62" style="display: none;"><div class="QuestionText">One thousand concurrent users stream video to their laptops. A 30/70 split between 2.4 GHz and 5 GHz is used. Based on client count, how many APs (rounded to the nearest whole number) are needed?</div><ol class="MCAnswers"><li id="Q_62_0"><button class="FuncButton" id="Q_62_0_Btn" onclick="CheckMCAnswer(62,0,this)">?</button>&#160;&#160;A. 26</li><li id="Q_62_1"><button class="FuncButton" id="Q_62_1_Btn" onclick="CheckMCAnswer(62,1,this)">?</button>&#160;&#160;B. 28</li><li id="Q_62_2"><button class="FuncButton" id="Q_62_2_Btn" onclick="CheckMCAnswer(62,2,this)">?</button>&#160;&#160;C. 30</li><li id="Q_62_3"><button class="FuncButton" id="Q_62_3_Btn" onclick="CheckMCAnswer(62,3,this)">?</button>&#160;&#160;D. 32</li></ol></li>
+<li class="QuizQuestion" id="Q_63" style="display: none;"><div class="QuestionText">There will be 100 concurrent users streaming video to their laptops. A 30/70 split between 2.4 Ghz and 5 Ghz will be used. Roughly how many APs (rounded to the nearest whole number) are needed based on client count?</div><ol class="MCAnswers"><li id="Q_63_0"><button class="FuncButton" id="Q_63_0_Btn" onclick="CheckMCAnswer(63,0,this)">?</button>&#160;&#160;A. 2</li><li id="Q_63_1"><button class="FuncButton" id="Q_63_1_Btn" onclick="CheckMCAnswer(63,1,this)">?</button>&#160;&#160;B. 3</li><li id="Q_63_2"><button class="FuncButton" id="Q_63_2_Btn" onclick="CheckMCAnswer(63,2,this)">?</button>&#160;&#160;C. 4</li><li id="Q_63_3"><button class="FuncButton" id="Q_63_3_Btn" onclick="CheckMCAnswer(63,3,this)">?</button>&#160;&#160;D. 5</li></ol></li>
+<li class="QuizQuestion" id="Q_64" style="display: none;"><div class="QuestionText">What is out of scope when considering the best practices for high-density wireless designs?</div><ol class="MCAnswers"><li id="Q_64_0"><button class="FuncButton" id="Q_64_0_Btn" onclick="CheckMCAnswer(64,0,this)">?</button>&#160;&#160;A. number of SSIDs</li><li id="Q_64_1"><button class="FuncButton" id="Q_64_1_Btn" onclick="CheckMCAnswer(64,1,this)">?</button>&#160;&#160;B. maximum beamforming</li><li id="Q_64_2"><button class="FuncButton" id="Q_64_2_Btn" onclick="CheckMCAnswer(64,2,this)">?</button>&#160;&#160;C. band selection</li><li id="Q_64_3"><button class="FuncButton" id="Q_64_3_Btn" onclick="CheckMCAnswer(64,3,this)">?</button>&#160;&#160;D. minimum bitrate</li></ol></li>
+<li class="QuizQuestion" id="Q_65" style="display: none;"><div class="QuestionText">Which enrollment method must be used when containerization is required on<br />BYOD Android devices managed by Systems Manager?</div><ol class="MCAnswers"><li id="Q_65_0"><button class="FuncButton" id="Q_65_0_Btn" onclick="CheckMCAnswer(65,0,this)">?</button>&#160;&#160;A. Systems Manager network ID</li><li id="Q_65_1"><button class="FuncButton" id="Q_65_1_Btn" onclick="CheckMCAnswer(65,1,this)">?</button>&#160;&#160;B. Android Enterprise utilizing a Work Profile</li><li id="Q_65_2"><button class="FuncButton" id="Q_65_2_Btn" onclick="CheckMCAnswer(65,2,this)">?</button>&#160;&#160;C. Android Business utilizing a BYOD Profile</li><li id="Q_65_3"><button class="FuncButton" id="Q_65_3_Btn" onclick="CheckMCAnswer(65,3,this)">?</button>&#160;&#160;D. Systems Manager container ID</li></ol></li>
+<li class="QuizQuestion" id="Q_66" style="display: none;"><div class="QuestionText">The WAN connection of a Cisco Meraki MX security appliance is congested, and the MX appliance is buffering the traffic from LAN ports going to the WAN ports. High, normal, and low priority queue buffers are all full. Which proportion of the normal traffic is forwarded compared to the other queues?</div><ol class="MCAnswers"><li id="Q_66_0"><button class="FuncButton" id="Q_66_0_Btn" onclick="CheckMCAnswer(66,0,this)">?</button>&#160;&#160;A. 4/10 packets</li><li id="Q_66_1"><button class="FuncButton" id="Q_66_1_Btn" onclick="CheckMCAnswer(66,1,this)">?</button>&#160;&#160;B. 2/10 packets</li><li id="Q_66_2"><button class="FuncButton" id="Q_66_2_Btn" onclick="CheckMCAnswer(66,2,this)">?</button>&#160;&#160;C. 2/7 packets</li><li id="Q_66_3"><button class="FuncButton" id="Q_66_3_Btn" onclick="CheckMCAnswer(66,3,this)">?</button>&#160;&#160;D. 5/15</li><li id="Q_66_4"><button class="FuncButton" id="Q_66_4_Btn" onclick="CheckMCAnswer(66,4,this)">?</button>&#160;&#160;packets</li></ol></li>
+<li class="QuizQuestion" id="Q_67" style="display: none;"><div class="QuestionText">What is the default frequency of SD-WAN probes sent between VPN peers in a Cisco Meraki MX SD-WAN deployment?</div><ol class="MCAnswers"><li id="Q_67_0"><button class="FuncButton" id="Q_67_0_Btn" onclick="CheckMCAnswer(67,0,this)">?</button>&#160;&#160;A. 10 milliseconds</li><li id="Q_67_1"><button class="FuncButton" id="Q_67_1_Btn" onclick="CheckMCAnswer(67,1,this)">?</button>&#160;&#160;B. 100 milliseconds</li><li id="Q_67_2"><button class="FuncButton" id="Q_67_2_Btn" onclick="CheckMCAnswer(67,2,this)">?</button>&#160;&#160;C. 1 second</li><li id="Q_67_3"><button class="FuncButton" id="Q_67_3_Btn" onclick="CheckMCAnswer(67,3,this)">?</button>&#160;&#160;D. 10 seconds</li></ol></li>
+<li class="QuizQuestion" id="Q_68" style="display: none;"><div class="QuestionText">An organization requires that BYOD devices be enrolled in Systems Manager before they gain<br />access to the network. Part of the enrollment includes pushing out the corporate SSID preshared<br />key, corporate email settings, and some business-sensitive PDFs. When a user leaves the organization, which Systems Manager feature allows the removal of only the MDM-delivered content from the user&#x2019;s device?</div><ol class="MCAnswers"><li id="Q_68_0"><button class="FuncButton" id="Q_68_0_Btn" onclick="CheckMCAnswer(68,0,this)">?</button>&#160;&#160;A. Unenroll Device</li><li id="Q_68_1"><button class="FuncButton" id="Q_68_1_Btn" onclick="CheckMCAnswer(68,1,this)">?</button>&#160;&#160;B. Clear Pushed Data</li><li id="Q_68_2"><button class="FuncButton" id="Q_68_2_Btn" onclick="CheckMCAnswer(68,2,this)">?</button>&#160;&#160;C. Selective Wipe</li><li id="Q_68_3"><button class="FuncButton" id="Q_68_3_Btn" onclick="CheckMCAnswer(68,3,this)">?</button>&#160;&#160;D. Erase Device</li></ol></li>
+<li class="QuizQuestion" id="Q_69" style="display: none;"><div class="QuestionText">Refer to the exhibit. Which condition or conditions will cause the &#x201C;All Databases & cloud services&#x201D; SD-WAN traffic to be routed via a VPN tunnel on WAN2?<img src="../../Meraki/22.PNG" alt="22.PNG" title="22" width="586" height="181"/></div><ol class="MCAnswers"><li id="Q_69_0"><button class="FuncButton" id="Q_69_0_Btn" onclick="CheckMCAnswer(69,0,this)">?</button>&#160;&#160;A. WAN1 tunnel latency is 20 ms or more, irrespective of WAN2 tunnel performance.</li><li id="Q_69_1"><button class="FuncButton" id="Q_69_1_Btn" onclick="CheckMCAnswer(69,1,this)">?</button>&#160;&#160;B. WAN1 tunnel latency is 20 ms or more, and WAN2 tunnel meets the configured performance criteria.</li><li id="Q_69_2"><button class="FuncButton" id="Q_69_2_Btn" onclick="CheckMCAnswer(69,2,this)">?</button>&#160;&#160;C. WAN1 tunnel latency is 20 ms or less, irrespective of WAN2 tunnel performance.</li><li id="Q_69_3"><button class="FuncButton" id="Q_69_3_Btn" onclick="CheckMCAnswer(69,3,this)">?</button>&#160;&#160;D. WAN1 tunnel latency is 20 ms or less, and WAN2 tunnel meets the configured performance<br />criteria.</li></ol></li></ol>
+
+
+
+</div>
+
+</div>
+
+<div class="Feedback" id="FeedbackDiv">
+<div class="FeedbackText" id="FeedbackContent"></div>
+<button id="FeedbackOKButton" class="FuncButton" onclick="HideFeedback(); return false;">&#160;OK&#160;</button>
+</div>
+
+<!-- BeginBottomNavButtons -->
+
+
+<div class="NavButtonBar" id="BottomNavBar">
+
+
+
+
+<button class="NavButton" onclick="location='contents.htm'; return false;"> Index </button>
+
+
+
+<button class="NavButton" onclick="location='nextpage.htm'; return false;">=&gt;</button>
+
+
+</div>
+
+
+
+<!-- EndBottomNavButtons -->
+
+<!-- BeginSubmissionForm -->
+
+<!-- EndSubmissionForm -->
+
+</body>
+
+</html>
